@@ -4,29 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./main_style.css" type="text/css" />
+    <link rel="stylesheet" href="css/main_style.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <div class="header">
-                <div class="header__logo"></div>
-                <ul class="header__menu">
-                    <li><a href="">Movies</a></li>
-                    <li><a href="">TV</a></li>
-                    <li><a href="">Free</a></li>
-                    <li><a href="">MyVudu</a></li>
+            <div class="header-wrapper">
+                <div class="header_logo_wrapper">
+                    <a href="/home">
+                        <img src="https://www.vudu.com/content/images/logo.svg" alt="Vudu logo" class="home-logo">
+                    </a>
+                </div>
+                <ul class="header-menu">
+                    <li class="header-menu-list">
+                        <div class="header-menu-list-wrapper">
+                            <a href="">Movies</a>
+                        </div>
+                    </li>
+                    <li class="header-menu-list">
+                        <div class="header-menu-list-wrapper">
+                            <a href="">TV</a>
+                        </div>
+                    </li>
+                    <li class="header-menu-list">
+                        <div class="header-menu-list-wrapper">
+                            <a href="">Free</a>
+                        </div>
+                    </li>
+                    <li class="header-menu-list">
+                        <div class="header-menu-list-wrapper">
+                            <a href="">My Vudu</a>
+                        </div>
+                    </li>
                 </ul>
-                <div class="header__personal">
-                    <div class="header__account">
-                        <div class="header__Redeem">
+                <div class="header-user-wrapper">
+                    <div class="header-account-wrapper">
+                        <div class="header-account-item">
                             <button>Redeem</button>
                         </div>
-                        <div class="header__signIn">
+                        <div class="header-account-item">
                             <button>Sign In</button>
                         </div>
                     </div>
-                    <div class="header__search">Search</div>
+                    <div class="header-search">
+                        <button>
+                            <span class="material-icons md-36">search</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -37,9 +63,115 @@
 
     </main>
     <footer>
-        <div>
-            This is the footer
+        <div class="foot-container">
+            <div class="page-section"></div>
+            <div class="foot-download-icons">
+                <img src="/img/download-icons.png" alt="download  icons">
+            </div>
+            <div class="foot-columns-wrapper">
+                <div class="foot-col-container">
+                    <div class="foot-col">
+                        <div class="foot-col-top-row">Watch</div>
+                        <div class="foot-col-small">
+                            <a href="">Spotlight</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Movies</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">TV</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Free</a>
+                        </div>
+                    </div>
+                    <div class="foot-col">
+                        <div class="foot-col-top-row">My Account</div>
+                        <div class="foot-col-small">
+                            <a href="">My Vudu</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Account</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Settings</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Manage Devices</a>
+                        </div>
+                    </div>
+                    <div class="foot-col">
+                        <div class="foot-col-top-row">Features</div>
+                        <div class="foot-col-small">
+                            <a href="">Lists</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Family</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Disc to Digital</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">IntaWatch</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Movies Anywhere</a>
+                        </div>
+                    </div>
+                    <div class="foot-col">
+                        <div class="foot-col-top-row">Help</div>
+                        <div class="foot-col-small">
+                            <a href="">About Us</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Devices</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Support</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Forums</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Contact Us</a>
+                        </div>
+                        <div class="foot-col-small">
+                            <a href="">Jobs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-social-icon">
+                <img src="/img/social-icons.png" alt="social-icons">
+            </div>
+            <div class="foot-last-info">
+                <span>
+                    <a href="">Terms and Policies</a>
+                </span>
+                <span>
+                    <span class="foot-separator">|</span>
+                    <a href="">Your Privacy Rights</a>
+                </span>
+                <span>
+                    <span class="foot-separator">|</span>
+                    <a href="">AdChoices</a>
+                </span>
+                <span>
+                    <span class="foot-separator">|</span>
+                    <a href="">Do Not Sell My Personal Information</a>
+                </span>
+                <span>
+                    <span class="foot-separator">|</span>
+                    <a href="">California Notice</a>
+                </span>
+                <span>
+                    <span class="foot-separator">|</span>
+                    <a href="">Feedback</a>
+                </span>
+
+            </div>
         </div>
+
 
     </footer>
     <script></script>
