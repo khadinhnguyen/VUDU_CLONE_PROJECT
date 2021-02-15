@@ -1,3 +1,92 @@
 <section>
-    <h1>This is home page</h1>
+    <div class="main-wrapper">
+        <div class="hero-wrapper">
+            {{!-- <span>
+            <div>
+                <a href="">
+                    <div class="hero-background" style="background-image: url('/img/hero/41657-placard-1500.png');">
+                        
+                        <div class="hero-navigation">
+                            <span class="hero"></span>
+                            <span class="hero"></span>
+                            <span class="hero"></span>
+                            <span class="hero"></span>
+                            <span class="hero"></span>
+
+                        </div>
+            
+                    </div>
+                </a>
+            </div>
+            </span> --}}
+
+            <div class="slideshow-container">
+                {{#each backgroundImage}}
+                <div class="mySlides fade">
+                    <a href="#">
+                        <img src={{this.heroImage}} style="width:100%">
+                    </a>
+                </div>
+                {{/each}}
+            </div>  
+
+
+        </div>
+
+        <div class="main-body-display d-flex flex-column">
+            {{!-- this is main <br>
+            this is main <br>
+            this is main <br>
+            this is main <br>
+            this is main <br>
+            this is main <br> --}}
+            <div class="main-section">
+                <div class="main-section-title">
+                    <a href="">Movies</a>
+                </div>
+                <div class="movie-card-collection row row-cols-6 justify-content-md-center">
+                    {{#each movies}}
+                        <div class="movie-card-wrapper col">
+                            <a href="/{{this.id}}">
+                                <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                            </a>                        
+                        </div> 
+                   {{/each}}
+                </div>
+                
+            </div>
+            <div class="main-section">
+                <div class="main-section-title">
+                    <a href="">TV</a>
+                </div>
+                <div class="movie-card-collection row row-cols-6 justify-content-md-center">
+                    {{#each TVs}}
+                        <div class="movie-card-wrapper col">
+                            <a href="/{{this.id}}">
+                                <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                            </a>  
+                        </div> 
+                   {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+    </script>               
+
 </section>

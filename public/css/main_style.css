@@ -2,34 +2,73 @@
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+.font-13 {
+    font-size: 13px;
+}
+.font-17 {
+    font-size: 17px
+}
+
+.font-24 {
+    font-size: 24px
+}
+
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left;
+}
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
+
+
 body {
+    width: 100%;
+    height: 100%;
     background-color: #041c2c;
     color: #fff;
     line-height: 1.3;
     font-family: Helvetica, Arial, Helvetica, sans-serif;
     font-size: 17px;
-    text-align: center;
+    /* text-align: center; */
+    /* align-items: center; */
     /* overflow: hidden; */
 
 }
+
+.main-page-container{
+    width: 100%;
+    max-width: 1364px;
+    min-width: 768px;
+    margin: auto;
+}
+
+
+
+/* button {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font-size: inherit;
+    /* check inherit color *
+*/
 
 /* div {
     display: block;
 } */
 
 
-
-
 header {
     width : 100%;
-    min-width : 710px;
+    min-width : 768px;
     height: 60px;
     position : fixed;
     top : 0;
@@ -43,17 +82,19 @@ header {
 
 .header-wrapper {
     display: flex;
-    align-items: center;
     height: 100%;
+    min-width: 768px;
+    max-width: 1368px;
     padding: 0 25px;
-    margin: 0 auto;
+    /* margin-top: 20px; */
+    margin: 20px auto;
 }
 
 .header-logo-wrapper{
     height: 100%;
     padding: 5px 0;
-    margin: 0 10px 0 0;
-    line-height: 50px;
+    /* margin: 0 10px 0 0; */
+    /* line-height: 50px; */
 }
 
 .home-logo {
@@ -71,17 +112,16 @@ header {
 }
 
 .header-menu-list-wrapper {
-    /* position: relative; */
     padding: 0 10px;
 }
 
 .header-menu-list-wrapper a{
     width: 100%;
-    color: #fff;
+    /* color: #fff; */
     padding: 0 5px;
     /* cursor: pointer; */
-    text-decoration: none;
-    font-size: 17px;
+    /* text-decoration: none;
+    font-size: 17px; */
 }
 
 .header-user-wrapper {
@@ -100,26 +140,85 @@ header {
 .header-account-item {
     /* font-size: 17px; */
     padding:0 10px;
-    align-items: center;
+    /* align-items: center; */
     /* check postion relative */
 }
 
-.header-search {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    position: center;
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-content {
+/* margin-top: 20px; */
+display: none;
+position: absolute;
+background-color: #041c2c;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
 }
 
-main {
-    /* height: 100%; */
-    height: 1000px;
+
+
+.div-dropbtn{
+margin-bottom: 18px;
+}
+
+.dropbtn {
+
+/* /* button { */
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font-size: inherit;
+    /* check inherit color *
+*/
+}
+  
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    float: left;
+}
+  
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+    float: left;
+    background-color:#003452 ;
+}
+  
+  .dropdown:hover .dropbtn {
+      background-color: c#7098af;
+      color: #7098af
+    }
+
+
+section {
+    margin: 60px 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    
 }
 
 .foot-container {
     display: flex;
     flex-direction: column;
-    margin: 0 4%;
+    /* margin: 0 4%; */
+
+ 
+    height: 100%;
+    min-width: 768px;
+    max-width: 1368px;
+    padding: 0 25px;
+    /* margin-top: 20px; */
+    margin: auto;
 }
 
 .foot-download-icons {
@@ -134,8 +233,8 @@ main {
     float: left;
     height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
 }
 
 .foot-col-container {
@@ -153,7 +252,7 @@ main {
 
 .foot-col {
     width: 25%;
-    float: left;
+    text-align: left;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
@@ -174,18 +273,19 @@ main {
     font-size: 14px;
     font-weight: 200;
     color: #b0bec5;
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 
 .foot-social-icon{
     margin-top: 50px;
-    margin-right: 0;
+    /* margin-right: 0; */
     text-align: right;
 }
 
 .foot-last-info {
     width: 100%;
-    padding: 0;
+    text-align: left;
+    /* padding: 0; */
 
 }
 
@@ -205,17 +305,18 @@ main {
     margin: 0;
 }
 
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
 a:hover {
     color: #7098af;
 }
 
-button {
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    color: inherit;
-    font-size: inherit;
-    /* check inherit color */
-}
+
+
+
 
 
