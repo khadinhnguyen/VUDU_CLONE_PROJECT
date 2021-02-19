@@ -1,25 +1,6 @@
-<section>
-    <div class="main-wrapper">
+<section>      {{!-- hero --}}
+    <div class="container">
         <div class="hero-wrapper">
-            {{!-- <span>
-            <div>
-                <a href="">
-                    <div class="hero-background" style="background-image: url('/img/hero/41657-placard-1500.png');">
-                        
-                        <div class="hero-navigation">
-                            <span class="hero"></span>
-                            <span class="hero"></span>
-                            <span class="hero"></span>
-                            <span class="hero"></span>
-                            <span class="hero"></span>
-
-                        </div>
-            
-                    </div>
-                </a>
-            </div>
-            </span> --}}
-
             <div class="slideshow-container">
                 {{#each backgroundImage}}
                 <div class="mySlides fade">
@@ -29,49 +10,76 @@
                 </div>
                 {{/each}}
             </div>  
-
-
-        </div>
-
-        <div class="main-body-display d-flex flex-column">
-            {{!-- this is main <br>
-            this is main <br>
-            this is main <br>
-            this is main <br>
-            this is main <br>
-            this is main <br> --}}
-            <div class="main-section">
-                <div class="main-section-title">
-                    <a href="">Movies</a>
-                </div>
-                <div class="movie-card-collection row row-cols-6 justify-content-md-center">
-                    {{#each movies}}
-                        <div class="movie-card-wrapper col">
-                            <a href="/{{this.id}}">
-                                <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
-                            </a>                        
-                        </div> 
-                   {{/each}}
-                </div>
-                
-            </div>
-            <div class="main-section">
-                <div class="main-section-title">
-                    <a href="">TV</a>
-                </div>
-                <div class="movie-card-collection row row-cols-6 justify-content-md-center">
-                    {{#each TVs}}
-                        <div class="movie-card-wrapper col">
-                            <a href="/{{this.id}}">
-                                <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
-                            </a>  
-                        </div> 
-                   {{/each}}
-                </div>
-            </div>
         </div>
     </div>
+</section>
+<section> {{!-- Movie Section --}}
+    <div class="container">
+        <div class="main-section-title">
+            <a href="">Movies</a>
+        </div>
+        <div class="grid-container-7">
+            {{#each movies}}
+                <a href="/{{this.id}}">
+                    <div class="poster-wrapper">
+                        <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                        <div class="overlay">
+                            <div class="text">{{this.title}}</div>
+                        </div>                        
+                    </div> 
+                </a>
+            {{/each}}
+        </div>
+    </div>
+</section>
 
+<section> {{!-- Content Section --}}
+    <div class="container">
+        <div class="special-container flex-container">
+        <div class="center-align">
+            <span id="special-top-line">
+                ULTIMATE<br> MOVIE FAN
+            </span>
+            <span id="special-second-line">
+                SALE<br>
+            </span>
+            <span id="special-third-line">
+                100'S OF MOVIES ON SALE FOR A LIMITED TIME
+            </span>
+        </div>
+        <div class="grid-container-5">
+            {{#each specials}}
+                <div class="special-poster-container">
+                    <img src="{{this.posterImage}}" alt="{{this.title}}">
+                </div>
+            {{/each}}
+        </div>
+        </div>
+
+    </div>
+
+
+</section>
+
+<section> {{!-- TV Section --}}
+    <div class="container">
+        <div class="main-section-title">
+            <a href="">TV</a>
+        </div>
+        <div class="grid-container-7">
+            {{#each TVs}}
+                <a href="/{{this.id}}">
+                    <div class="poster-wrapper">
+                        <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                        <div class="overlay">
+                            <div class="text">{{this.title}}</div>
+                        </div>                        
+                    </div> 
+                </a>
+            {{/each}}
+        </div>
+    </div>
+</section>
     <script>
     var slideIndex = 0;
     showSlides();

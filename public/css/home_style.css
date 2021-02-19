@@ -10,14 +10,14 @@
     
 /* } */ 
 
-.main-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-width: 768px;
+/* .main-wrapper { */
+    /* display: flex;
+    flex-direction: column; */
+    /* min-width: 768px;
     max-width: 1368px;
     text-align: center;
-    align-items: center;
-}
+    align-items: center; */
+/* } */
 
 .hero-wrapper{
     margin: 0;
@@ -29,21 +29,10 @@
 
 }
 .hero-background {
-    /* width: 100%; */
-    /* min-width: 768px; */
     height: 451px;
-    /* min-height: 300px; */
-    /* max-height: 451px; */
-    /* min-width: 768px; */
-    /* position: relative; */
-    /* display: inline-block; */
-
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center;
-    /* margin-left: -4.4%;
-    margin-right: -4.4%; */
-    /* width: 100%; */
 }
 
 .hero-navigation {
@@ -72,25 +61,75 @@
 
 
 .main-section-title{
-    width: 100%;
-    height: 36px;
-    margin-bottom: 5px;
-    margin-top: 30px;
-    text-align: left;
+  margin: 15px 0;
+}
+
+.poster-wrapper{
+  position: relative;
+  width: 90%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+  border-radius: .25em;
 
 }
 
-.movie-card-wrapper {
-    width: 170px;
-    height: 205px;
-    margin: 0 auto;
-    /* margin-left: 20px;
-    margin-top: 30px; */
+.poster-wrapper:hover .overlay{
+  opacity: .8;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .img-movie {
     width: 100%;
     height: 100%;
+}
+
+.special-container {
+  margin-top: 20px;
+  background-color: purple;
+}
+
+#special-top-line{
+  font-size: 60px;
+  color: #C1C159;
+  font-weight: 900;
+  text-shadow: -6px 6px black;
+}
+
+#special-second-line{
+  font-size: 60px;
+  color: #e0e0d1;
+  font-weight: 900;
+  text-shadow: -6px 6px black;
+}
+
+.special-poster-container{
+  width: 130px;
+  margin: 10px;
+}
+
+.special-poster-container img{
+  max-width: 100%;
+  max-height: 100%;
 }
 
 

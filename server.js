@@ -12,8 +12,10 @@ app.set('view engine', 'handlebars');
  
 app.get('/', (req, res) => {
     res.render("home", {
-        movies : movie_ultil.getTypedMovies('movie',8),
-        TVs : movie_ultil.getTypedMovies('tv',8),
+        javaScript : 'test.js',
+        movies : movie_ultil.getTypedMovies('movie',7),
+        TVs : movie_ultil.getTypedMovies('tv',7),
+        specials : movie_ultil.getTypedMovies('tv',5),
         backgroundImage : heroImages,        
     });
 });
@@ -32,6 +34,18 @@ app.get('/account-setup', (req,res) => {
 //         backgroundImage : heroImages,
 //     });
 // });
+
+app.get('/movie-list',(req,res) => {
+    res.render('movieList', {
+        movies : movie_ultil.getTypedMovies('movie')
+    })
+});
+
+app.get('/tv-list', (req,res) => {
+    res.render('tvList', {
+        TVs : movie_ultil.getTypedMovies('tv')
+    })
+});
 
 app.get('/:id', (req,res) => {
     console.log(req.params.id);
@@ -56,6 +70,6 @@ app.get('/:id', (req,res) => {
 
 
 PORT = 3000;
-app.listen(PORT, () =>{
+app.listen(PORT, '192.168.0.59' || 'localhost',() =>{
     console.log(`we are connecting to PORT: ${PORT}`);
 });

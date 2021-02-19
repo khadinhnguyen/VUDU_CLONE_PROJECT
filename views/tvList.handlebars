@@ -1,0 +1,16 @@
+<section>
+    <div class="container">
+        <div class="grid-container-7">
+            {{#each TVs}}
+            <a href="/{{this.id}}">
+                <div class="m-2 poster-wrapper">                    
+                    <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">                   
+                    <div class="overlay">
+                        <div class="text">{{this.title}}</div>
+                    </div>                        
+                </div> 
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</section>

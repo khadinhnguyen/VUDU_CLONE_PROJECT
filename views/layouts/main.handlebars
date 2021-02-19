@@ -10,42 +10,43 @@
     <link rel="stylesheet" href="css/product_style.css" type="text/css">
     <link rel="stylesheet" href="css/signin_style.css" type="text/css">
     
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src='/js/{{javaScript}}'></script>
 </head>
 <body>
-    <div class="main-page-container">
+    {{!-- <div class="main-page-container"> --}}
     <header>
-        <nav>
+        <div class="container">            
             <div class="header-wrapper">
                 <div class="header_logo_wrapper">
                     <a href="/">
                         <img src="https://www.vudu.com/content/images/logo.svg" alt="Vudu logo" class="home-logo">
                     </a>
                 </div>
-                <ul class="header-menu">
-                    <li class="header-menu-list">
-                        <div class="header-menu-list-wrapper">
-                            <a href="">Movies</a>
-                        </div>
-                    </li>
-                    <li class="header-menu-list">
-                        <div class="header-menu-list-wrapper">
-                            <a href="">TV</a>
-                        </div>
-                    </li>
-                    <li class="header-menu-list">
-                        <div class="header-menu-list-wrapper">
-                            <a href="">Free</a>
-                        </div>
-                    </li>
-                    <li class="header-menu-list">
-                        <div class="header-menu-list-wrapper">
-                            <a href="">My Vudu</a>
-                        </div>
-                    </li>
-                </ul>
+                <nav>
+                    <ul class="header-menu">
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="/movie-list">Movies</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="/tv-list">TV</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="">Free</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="">My Vudu</a>
+                            </div>
+                        </li>
+                    </ul>                               
+                </nav>
                 <div class="header-user-wrapper">
                     <div class="header-account-wrapper">
                         <div class="header-account-item dropdown">
@@ -83,7 +84,8 @@
                     </div>
                 </div>
             </div>
-        </nav>
+   
+        </div>
     </header>
     <main>
         {{{body}}}
@@ -200,7 +202,7 @@
 
 
     </footer> --}}
-    </div>
+    {{!-- </div> --}}
     <script></script>
 </body>
 <footer>
