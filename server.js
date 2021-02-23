@@ -70,6 +70,6 @@ app.get('/:id', (req,res) => {
 
 
 PORT = 3000;
-app.listen(PORT, '192.168.0.59' || 'localhost',() =>{
+app.listen(PORT, () =>{
     console.log(`we are connecting to PORT: ${PORT}`);
 });
