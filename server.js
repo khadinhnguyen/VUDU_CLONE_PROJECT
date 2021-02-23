@@ -16,7 +16,8 @@ app.get('/', (req, res) => {
         movies : movie_ultil.getTypedMovies('movie',7),
         TVs : movie_ultil.getTypedMovies('tv',7),
         specials : movie_ultil.getTypedMovies('tv',5),
-        backgroundImage : heroImages,        
+        backgroundImage : heroImages,  
+        promotions : movie_ultil.getPromotedMovies('movie-sale',5),      
     });
 });
 
@@ -27,13 +28,6 @@ app.get('/sign-in', (req,res) => {
 app.get('/account-setup', (req,res) => {
     res.render("registration");
 });
-
-// app.get('/hero-test', (req,res)=>{
-//     res.render("heroTest", {
-//         // backgroundImage : heroImages,
-//         backgroundImage : heroImages,
-//     });
-// });
 
 app.get('/movie-list',(req,res) => {
     res.render('movieList', {
@@ -50,19 +44,6 @@ app.get('/tv-list', (req,res) => {
 app.get('/:id', (req,res) => {
     console.log(req.params.id);
     res.render("productDescription", {
-        // product : {
-        //     id : 1398601,
-        //     title : 'Trolls World Tour',
-        //     year : 2020,
-        //     rating: 4, // stars
-        //     description: "Poppy and Branch discover that they are but one of six different Troll tribes scattered over six different lands, each devoted to a different form of music: Pop, Funk, Classical, Techno, Country and Rock. Their world is about to get a lot bigger, and a whole lot louder. A member of hard-rock royalty, Queen Barb, wants to destroy all other kinds of music to let rock reign supreme. Poppy, Branch and their friends set out to visit all the other lands to unify the Trolls in harmony.",
-        //     category : "movie",
-        //     rent : 3.99,
-        //     buy : 14.00,
-        //     posterImage : "https://images2.vudu.com/poster2/1398601-168",
-        //     backgroundImage : "https://images2.vudu.com/background/1398601-1280a.jpg"
-    
-        // }
         product : movie_ultil.getMovie(req.params.id),
     });
 });

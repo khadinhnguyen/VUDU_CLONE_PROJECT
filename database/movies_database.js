@@ -9,8 +9,9 @@ const movies = [
         category : "movie",
         rent : 3.99,
         buy : 14.00,
-        posterImage : "https://images2.vudu.com/poster2/1398601-168",
-        backgroundImage : "https://images2.vudu.com/background/1398601-1280a.jpg"
+        promotion: "movie-sale",
+        posterImage : "/movie/1398601-168.jpg",
+        backgroundImage : "/movie/1398601-1280a.jpg"
 
     },
     {
@@ -21,96 +22,105 @@ const movies = [
         category : "movie",
         rent : 5.99,
         buy : 19.99,
+        promotion: "",
         posterImage : "/movie/1569785-168.jpg",
         backgroundImage : "/movie/1569785-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
+        id : 1616928,
+        title : 'Monster Hunter',
         year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        description: "When Lt. Artemis and her loyal soldiers are transported to a new world, they engage in a desperate battle for survival against enormous enemies with incredible powers..",
         category : "movie",
         rent : 5.99,
         buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        promotion: "movie-sale",
+        posterImage : "/movie/1616928-168.jpg",
+        backgroundImage : "/movie/1616928-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
+        id : 1547884,
+        title : 'Greenland',
         year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        description: "A family fights for survival as a planet-killing comet races to Earth. John Garrity (Gerard Butler), his estranged wife Allison (Morena Baccarin), and young son Nathan make a perilous journey to their only hope for sanctuary. Amid terrifying news accounts of cities around the world being leveled by the comet's fragments, the Garrity's experience the best and worst in humanity while they battle the increasing panic and lawlessness surrounding them. As the countdown to global apocalypse approaches zero, their incredible trek culminates in a desperate and last-minute flight to a possible safe haven.",
         category : "movie",
         rent : 5.99,
         buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        promotion: "",
+        posterImage : "/movie/1547884-168.jpg",
+        backgroundImage : "/movie/1547884-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
+        id : 1356893,
+        title : 'Sonic the Hedgehog',
         year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        description: "The world needed a hero, we got a hedgehog. Superpowered with speed, Sonic races to save the world and stop evil genius Dr. Robotnik from world domination. Jim Carrey, Ben Schwartz and James Marsden star in the adventure the whole family will enjoy.",
         category : "movie",
-        rent : 5.99,
-        buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        rent : 2.99,
+        buy : 7.99,
+        promotion: "movie-sale",
+        posterImage : "/movie/1356893-168.jpg",
+        backgroundImage : "/movie/1356893-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
-        year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        id : 836320,
+        title : 'Sing',
+        year : 2016,
+        description: "When an eternally optimistic koala puts on a singing competition to save his failing theater, animals across the city gather to step into the spotlight and chase their dreams!",
         category : "movie",
-        rent : 5.99,
-        buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        rent : 3.99,
+        buy : 14.99,
+        promotion: "movie-sale",
+        posterImage : "/movie/836320-168.jpg",
+        backgroundImage : "/movie/836320-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
+        id : 1409305,
+        title : 'Scoob!',
         year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        description: "Scooby-Doo, Shaggy and Mystery Inc. face their biggest, toughest mystery yet and discover that Scooby's secret legacy could be the key to stopping a global ",
         category : "movie",
-        rent : 5.99,
-        buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        rent : 4.99,
+        buy : 13.99,
+        promotion: "",
+        posterImage : "/movie/1409305-168.jpg",
+        backgroundImage : "/movie/1409305-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
-        year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        id : 716359,
+        title : 'Moana',
+        year : 2017,
+        description: "Moana sets sail on a daring mission to save her people. Along the way, she meets the once mighty demigod Maui - together they cross the ocean on a fun-filled, action-packed voyage.",
         category : "movie",
-        rent : 5.99,
+        rent : 3.99,
         buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        promotion: "movie-sale",
+        posterImage : "/movie/716359-168.jpg",
+        backgroundImage : "/movie/716359-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
-        year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        id : 1284351,
+        title : 'Frozen II',
+        year : 2019,
+        description: "Why was Elsa born with magical powers? The answer is calling her and threatening her kingdom. Together with Anna, Kristoff, Olaf and Sven, she'll set out on a dangerous but remarkable journey.",
         category : "movie",
-        rent : 5.99,
+        rent : 3.99,
         buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        promotion: "",
+        posterImage : "/movie/1284351-168.jpg",
+        backgroundImage : "/movie/1284351-1280a.jpg"
     },
     {
-        id : 1569785,
-        title : 'The Croods: A New Age',
+        id : 1100922,
+        title : 'Avengers: Endgame',
         year : 2020,
-        description: "In search of a new home, the Croods encounter the more sophisticated Betterman family. A new threat forces the two families to set aside their differences to avoid extinction.",
+        description: "The fourth installment in the Avengers saga is the culmination of 22 interconnected films and the climax of an epic journey. Earth's heroes will finally understand how fragile our reality is and the sacrifices that must be made to uphold it in a story of friendship, teamwork and setting aside differences to overcome an impossible obstacle",
         category : "movie",
-        rent : 5.99,
+        rent : 3.99,
         buy : 19.99,
-        posterImage : "/movie/1569785-168.jpg",
-        backgroundImage : "/movie/1569785-1280a.jpg"
+        promotion: "",
+        posterImage : "/movie/1100922-168.jpg",
+        backgroundImage : "/movie/1100922-1280a.jpg"
     },
     {
         id : 12625,
@@ -120,32 +130,156 @@ const movies = [
         category : "movie",
         rent : 2.99,
         buy : 9.99,
-        posterImage : "https://images2.vudu.com/poster2/12625-168",
-        backgroundImage : "https://images2.vudu.com/background/12625-1280a.jpg"
+        promotion: "",
+        posterImage : "/movie/12625-168.jpg",
+        backgroundImage : "/movie/12625-1280a.jpg"
 
     },
+    {
+        id : 1304701,
+        title : 'Jumanji: The Next Level',
+        year : 2019,
+        description: "The four players brave the jungle, desert, mountains and dangerous animals to save the fantastical video game world of Jumanji.",
+        category : "movie",
+        rent : 2.99,
+        buy : 14.99,
+        promotion: "",
+        posterImage : "/movie/1304701-168.jpg",
+        backgroundImage : "/movie/1304701-1280a.jpg"
 
-
-
-
-
-
-
-    
+    },
     {
         id : 1592934,
         title : 'Resident Alien: Season 1',
         year : 1993,
-        rating: 4.5, // stars
         description: "A weatherman is trapped in a personal time warp on the worst day of his life, Groundhog Day. Can he make the changes he needs to in order to break the cycle - and find true love?",
         category : "tv",
         rent : 2.99,
         buy : 9.99,
-        posterImage : "https://images2.vudu.com/poster2/1592934-168",
-        backgroundImage : ""
-
+        promotion: "",
+        posterImage : "/tv/1592934-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
     },
-    
+    {
+        id : 198665,
+        title : 'The Office: Season 4',
+        year : 2007,
+        description: "It's Season 4 and there are lots of changes at the office. Former temp Ryan is now everyone's boss and is pushing a new website initiative that threatens to upset the Scranton branch's comfortable world.",
+        category : "tv",
+        rent : 2.99,
+        buy : 17.99,
+        promotion: "",
+        posterImage : "/tv/198665-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1667215,
+        title : 'When Calls the Heart: Season 8',
+        year : 1998,
+        description: "More surprises and challenges are in store for the residents of Hope Valley. Elizabeth's relationships with Nathan and Lucas continue to deepen, Faith and Carson must make choices about their future, a",
+        category : "tv",
+        rent : 2.99,
+        buy : 18.99,
+        promotion: "",
+        posterImage : "/tv/1667215-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1051602,
+        title : 'PAW Patrol: Mighty Pups: Season 1',
+        year : 2018,
+        description: "PAW PATROL is a CG action-adventure preschool series starring a pack of six heroic puppies led by a tech-savvy 10-year-old boy named Ryder.",
+        category : "tv",
+        rent : 1.99,
+        buy : 4.99,
+        promotion: "",
+        posterImage : "/tv/1051602-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1273010,
+        title : 'The Temptations: Season 1',
+        year : 1998,
+        description: "The true story behind the legendary Motown musical sensation is brought to life in this touching miniseries.",
+        category : "tv",
+        rent : 2.99,
+        buy : 9.99,
+        promotion: "",
+        posterImage : "/tv/1273010-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1592934,
+        title : '',
+        year : 1993,
+        description: "",
+        category : "tv",
+        rent : 2.99,
+        buy : 9.99,
+        promotion: "",
+        posterImage : "/tv/1592934-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1273593,
+        title : 'Jason and the Argonauts: Season 1',
+        year : 2000,
+        description: "One of the most legendary adventures in all mythology is brought to life in Jason and the Argonauts, an epic saga of good and evil. As a mere boy Jason, the heir to the kingdom of Ancient Greece, witnesses the",
+        category : "tv",
+        rent : 2.99,
+        buy : 9.99,
+        promotion: "",
+        posterImage : "/tv/1273593-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1045016,
+        title : 'Lifers: Behind Bars: Season 1',
+        year : 2017,
+        description: "A groundbreaking documentary series shows what its like to serve a long-term prison sentence with unprecedented access to jails exclusively for long-term offenders, we meet the men convicted of",
+        category : "tv",
+        rent : 2.99,
+        buy : 9.99,
+        promotion: "",
+        posterImage : "/tv/1045016-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1453284,
+        title : 'Yellowstone: Season 3',
+        year : 2020,
+        description: "The Dutton family is threatened by new foes and lucrative business deals, forcing John, Kayce, Beth and Jamie to utilize unexpected alliances and risky measures to safeguard their legacy.",
+        category : "tv",
+        rent : 2.99,
+        buy : 9.99,
+        promotion: "",
+        posterImage : "/tv/1453284-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 1054838,
+        title : 'Salem Witch Trials: Season 1',
+        year : 2002,
+        description: "A masterful work accurately details the current consensus of what exactly occurred to prompt the colonial witch-trials.",
+        category : "tv",
+        rent : 2.99,
+        buy : 14.99,
+        promotion: "",
+        posterImage : "/tv/1054838-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
+    {
+        id : 296646,
+        title : 'Game of Thrones: Season 1',
+        year : 2011,
+        description: "Get in the 'Game'! Experience the first season of this visionary HBO series set in a mythical world whose inhabitants vie for control of the Iron Throne. But in a land where seasons can last a lifetime, winter is",
+        category : "tv",
+        rent : 2.99,
+        buy : 24.99,
+        promotion: "",
+        posterImage : "/tv/296646-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
 ]
 
 module.exports=movies;

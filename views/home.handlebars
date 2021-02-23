@@ -22,7 +22,7 @@
             {{#each movies}}
                 <a href="/{{this.id}}">
                     <div class="poster-wrapper">
-                        <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                        <img class="img-thumbnail" src="/img/{{this.posterImage}}" alt="{{this.title}}">
                         <div class="overlay">
                             <div class="text">{{this.title}}</div>
                         </div>                        
@@ -48,9 +48,9 @@
             </span>
         </div>
         <div class="grid-container-5">
-            {{#each specials}}
+            {{#each promotions}}
                 <div class="special-poster-container">
-                    <img src="{{this.posterImage}}" alt="{{this.title}}">
+                    <img src="/img/{{this.posterImage}}" alt="{{this.title}}">
                 </div>
             {{/each}}
         </div>
@@ -70,7 +70,7 @@
             {{#each TVs}}
                 <a href="/{{this.id}}">
                     <div class="poster-wrapper">
-                        <img class="img-thumbnail" src="{{this.posterImage}}" alt="{{this.title}}">
+                        <img class="img-thumbnail" src="/img/{{this.posterImage}}" alt="{{this.title}}">
                         <div class="overlay">
                             <div class="text">{{this.title}}</div>
                         </div>                        
