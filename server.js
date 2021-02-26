@@ -1,5 +1,5 @@
-const movie_ultil = require('./database/movie_ultility.js')
-const heroImages = require('./database/hero_images.js')
+const movie_ultil = require('./model/movie_ultility.js')
+const heroImages = require('./model/hero_images.js')
 var express = require('express');
 var exphbs  = require('express-handlebars');
  
@@ -12,7 +12,8 @@ app.set('view engine', 'handlebars');
  
 app.get('/', (req, res) => {
     res.render("home", {
-        javaScript : 'test.js',
+        pageTitle : "Home Page",
+        javaScript : 'hero.js',
         movies : movie_ultil.getTypedMovies('movie',7),
         TVs : movie_ultil.getTypedMovies('tv',7),
         specials : movie_ultil.getTypedMovies('tv',5),
@@ -22,21 +23,27 @@ app.get('/', (req, res) => {
 });
 
 app.get('/sign-in', (req,res) => {
-    res.render("signin");
+    res.render("signin", {
+        pageTitle : "Sign In",
+    });
 });
 
 app.get('/account-setup', (req,res) => {
-    res.render("registration");
+    res.render("registration", {
+        pageTitle : "Create Account",
+    });
 });
 
 app.get('/movie-list',(req,res) => {
     res.render('movieList', {
-        movies : movie_ultil.getTypedMovies('movie')
+        pageTitle : "Movies",
+        movies : movie_ultil.getTypedMovies('movie'),
     })
 });
 
 app.get('/tv-list', (req,res) => {
     res.render('tvList', {
+        pageTitle : "TVs",
         TVs : movie_ultil.getTypedMovies('tv')
     })
 });
@@ -44,6 +51,7 @@ app.get('/tv-list', (req,res) => {
 app.get('/:id', (req,res) => {
     console.log(req.params.id);
     res.render("productDescription", {
+        pageTitle : movie_ultil.getMovie(req.params.id).title,
         product : movie_ultil.getMovie(req.params.id),
     });
 });

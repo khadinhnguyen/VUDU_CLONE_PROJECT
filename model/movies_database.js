@@ -280,6 +280,18 @@ const movies = [
         posterImage : "/tv/296646-168.jpg",
         backgroundImage : "/tv/TV_background.jpg"
     },
+    {
+        id : 1661629,
+        title : 'Game of Thrones: Season 1',
+        year : 2017,
+        description: "After years of facing supervillains, monsters, and alien invaders intent on wiping out the human race, the world's most famous superhero (Tyler Hoechlin) and comic books' most famous journalist (Elizabeth)",
+        category : "tv",
+        rent : 2.99,
+        buy : 14.99,
+        promotion: "",
+        posterImage : "/tv/1661629-168.jpg",
+        backgroundImage : "/tv/TV_background.jpg"
+    },
 ]
 
 module.exports=movies;

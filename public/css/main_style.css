@@ -76,21 +76,6 @@ section{
 }
 
 
-
-/* button {
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    color: inherit;
-    font-size: inherit;
-    /* check inherit color *
-*/
-
-/* div {
-    display: block;
-} */
-
-
 header {
     width : 100%;
     min-width : 768px;
@@ -100,7 +85,6 @@ header {
     top : 0;
     left : 0;
     right : 0;
-    /* z-index: 11 -> to push this layer on the front */
     z-index : 11; 
     background : linear-gradient(90deg, #007bc4,#041c2c 100%)
 
@@ -112,15 +96,11 @@ header {
     min-width: 768px;
     max-width: 1368px;
     padding: 0 25px;
-    /* margin-top: 20px; */
     margin: 0 auto;
 }
 
 .header-logo-wrapper{
     height: 100%;
-    /* padding: 5px 0; */
-    /* margin: 0 10px 0 0; */
-    /* line-height: 50px; */
 }
 
 .home-logo {
@@ -143,11 +123,7 @@ header {
 
 .header-menu-list-wrapper a{
     width: 100%;
-    /* color: #fff; */
     padding: 0 5px;
-    /* cursor: pointer; */
-    /* text-decoration: none;
-    font-size: 17px; */
 }
 
 .header-user-wrapper {
@@ -164,10 +140,7 @@ header {
 }
 
 .header-account-item {
-    /* font-size: 17px; */
     padding:0 10px;
-    /* align-items: center; */
-    /* check postion relative */
 }
 
 .dropdown {
@@ -176,7 +149,6 @@ header {
   }
   
 .dropdown-content {
-/* margin-top: 20px; */
 display: none;
 position: absolute;
 background-color: #041c2c;
@@ -192,15 +164,11 @@ margin-bottom: 18px;
 }
 
 .dropbtn {
-
-/* /* button { */
     background-color: transparent;
     padding: 0;
     border: 0;
     color: inherit;
     font-size: inherit;
-    /* check inherit color *
-*/
 }
   
 .dropdown-content a {
@@ -238,14 +206,10 @@ main {
 .foot-container {
     display: flex;
     flex-direction: column;
-    /* margin: 0 4%; */
-
- 
     height: 100%;
     min-width: 768px;
     max-width: 1368px;
     padding: 0 25px;
-    /* margin-top: 20px; */
     margin: auto;
 }
 
@@ -261,8 +225,6 @@ main {
     float: left;
     height: 100%;
     width: 100%;
-    /* margin: 0;
-    padding: 0; */
 }
 
 .foot-col-container {
@@ -301,19 +263,16 @@ main {
     font-size: 14px;
     font-weight: 200;
     color: #b0bec5;
-    /* text-decoration: none; */
 }
 
 .foot-social-icon{
     margin-top: 50px;
-    /* margin-right: 0; */
     text-align: right;
 }
 
 .foot-last-info {
     width: 100%;
     text-align: left;
-    /* padding: 0; */
 
 }
 

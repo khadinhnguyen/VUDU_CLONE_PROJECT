@@ -1,6 +1,5 @@
 .product-hero-background{
     background-position: 100%;
-    /* position: absolute; */
 }
 
 .product-background-modify {
@@ -15,8 +14,6 @@
     min-height: 450px;
     padding-top: 30px;
     padding-left: 2.1%;
-    /* position: relative;
-    z-index: 2; */
 }
 
 .product-icon {

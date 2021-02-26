@@ -1,13 +1,18 @@
-// console.log('css loaded');
+<script>
+var slideIndex = 0;
+showSlides();
 
-// const poster = document.querySelectorAll('.poster-wrapper');
+function showSlides() {
+var i;
+var slides = document.getElementsByClassName("mySlides");
+for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+}
+slideIndex++;
+if (slideIndex > slides.length) {slideIndex = 1}    
+slides[slideIndex-1].style.display = "block";  
+setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>               
 
-// // poster.addEventListener("mouseover", (e)=>{
-// //     console.log('click');
-// // })
-
-// poster.forEach(item => {
-//     item.addEventListener("mouseover", (e)=> {
-//         console.log('clicked');
-//     })
-// })
+</section>
