@@ -302,6 +302,12 @@ a:hover {
     color: #7098af;
 }
 
+.error-message{
+    color: red;
+    font-size: 10px;
+    font-weight: 100;
+}
+
 
 
 

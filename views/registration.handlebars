@@ -4,30 +4,35 @@
         <div class="form-top">
             <div class="form-header"><p class="text-center font-24 fw-bolder">Create a New Account</p></div>
             <div class="form-body">
-                <form  action="">
+                <form  action="/registerAccount" method="POST">
                     <div class="mb-3">
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name" aria-label="First name" required>
+                                <input type="text" class="form-control" placeholder="First name" id="firstName" name="firstName">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" required>
+                                <input type="text" class="form-control" placeholder="Last name" id="lastName" name="lastName">
                             </div>
                         </div>
+                        <div class="error-message">{{errorsMessage.firstNameError}}</div>
+                        <div class="error-message">{{errorsMessage.lastNameError}}</div>
 
                     </div>
                     <div class="mb-3">
-                        <input id="username" class="form-control" type="email" name="username" required placeholder="email">
+                        <input id="userName" class="form-control" type="email" name="userName" placeholder="email">
+                        <div class="error-message">{{errorsMessage.emailError}}</div>
                     </div>
                     <div class="mb-3">
-                    <input id="password" class="form-control" type="password" name="password" required placeholder="password">
+                        <input id="password" class="form-control" type="password" name="password" placeholder="password">
+                        <div class="error-message">{{errorsMessage.passwordError}}</div>
                     </div>
                     <div class="mb-3 left form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                        <input class="form-check-input" type="checkbox" value="checked" id="flexCheckDefault" name="termAndPolicyCheck" >
                         <label class="form-check-label font-13" for="flexCheckDefault">
                             I certify that I am at least 18 years old and that I agree to the <span><a href="">Terms and Policies</a></span> and <span><a href="">Privacy Policy</a></span>. This service is for the U.S. only.
                         </label>
+                        <div class="error-message">{{errorsMessage.checkerError}}</div>
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="form-button">Sign Up</button>

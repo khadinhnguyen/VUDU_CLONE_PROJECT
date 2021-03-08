@@ -209,18 +209,6 @@ const movies = [
         backgroundImage : "/tv/TV_background.jpg"
     },
     {
-        id : 1592934,
-        title : '',
-        year : 1993,
-        description: "",
-        category : "tv",
-        rent : 2.99,
-        buy : 9.99,
-        promotion: "",
-        posterImage : "/tv/1592934-168.jpg",
-        backgroundImage : "/tv/TV_background.jpg"
-    },
-    {
         id : 1273593,
         title : 'Jason and the Argonauts: Season 1',
         year : 2000,

@@ -1,11 +1,14 @@
-const movie_ultil = require('./model/movie_ultility.js')
-const heroImages = require('./model/hero_images.js')
-var express = require('express');
-var exphbs  = require('express-handlebars');
+const movie_ultil = require('./model/movie_ultility.js');
+const heroImages = require('./model/hero_images.js');
+const registerValidation = require('./model/validation.js');
+const express = require('express');
+const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser');
  
 var app = express();
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: false})); // to use req.body.<name>
  
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
@@ -49,16 +52,55 @@ app.get('/tv-list', (req,res) => {
 });
 
 app.get('/:id', (req,res) => {
-    console.log(req.params.id);
+    const product = movie_ultil.getMovie(req.params.id);
     res.render("productDescription", {
-        pageTitle : movie_ultil.getMovie(req.params.id).title,
-        product : movie_ultil.getMovie(req.params.id),
+        pageTitle : product.title,
+        product
     });
+});
+
+app.post('/registerAccount', (req,res) => {
+    const userInput = {
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        email : req.body.userName,
+        password : req.body.password,
+        checker : req.body.termAndPolicyCheck
+    }
+
+    const errors = registerValidation(userInput);
+    if (errors.errorOccured){
+        res.render('registration',{
+            errorsMessage : errors
+        });
+    } else {
+        console.log('no error');
+        const sgMail = require('@sendgrid/mail')
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+        const msg = {
+        to: userInput.email, // Change to your recipient
+        from: 'nguyendkha@gmail.com', // Change to your verified sender
+        subject: 'Sending with SendGrid is Fun',
+        text: 'Testing reply email from Vudu',
+        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        }
+        sgMail
+        .send(msg)
+        .then(() => {
+            console.log('Email sent');
+            res.redirect('/'); 
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+        
+    }
+
 });
 
 
 
-PORT = 3000;
+PORT = 3000; 
 app.listen(PORT, () =>{
     console.log(`we are connecting to PORT: ${PORT}`);
 });
