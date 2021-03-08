@@ -4,12 +4,14 @@
         <div class="form-top">
             <div class="form-header"><p class="text-center font-24 fw-bolder">Sign In To Vudu</p></div>
             <div class="form-body">
-                <form  action="">
+                <form  action="/signInAccount" method="POST">
                     <div class="mb-3">
-                        <input id="username" class="form-control" type="email" name="username" required placeholder="email">
+                        <input id="userName" class="form-control" type="email" name="userName" placeholder="email">
+                        <div class="error-message">{{errorsMessage.userError}}</div>
                     </div>
                     <div class="mb-3">
-                        <input id="password" class="form-control" type="password" name="password" required placeholder="password">
+                        <input id="password" class="form-control" type="password" name="password" placeholder="password">
+                        <div class="error-message">{{errorsMessage.passwordError}}</div>
                     </div>
                     <div class="mb-3 left">
                         <a href=""lab>Forgot your Vudu password?</a>

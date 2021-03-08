@@ -1,6 +1,6 @@
 const movie_ultil = require('./model/movie_ultility.js');
 const heroImages = require('./model/hero_images.js');
-const registerValidation = require('./model/validation.js');
+const validation = require('./model/validation.js');
 const express = require('express');
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -52,9 +52,9 @@ app.get('/tv-list', (req,res) => {
 });
 
 app.get('/:id', (req,res) => {
-    const product = movie_ultil.getMovie(req.params.id);
+    const product = movie_ultil.getMovie(req.params.id); 
     res.render("productDescription", {
-        pageTitle : product.title,
+        pageTitle : product?.title,
         product
     });
 });
@@ -67,12 +67,13 @@ app.post('/registerAccount', (req,res) => {
         password : req.body.password,
         checker : req.body.termAndPolicyCheck
     }
+    const errors = validation.registerValidation(userInput);
 
-    const errors = registerValidation(userInput);
     if (errors.errorOccured){
         res.render('registration',{
+            pageTitle : "Create Account",
             errorsMessage : errors
-        });
+        });    
     } else {
         console.log('no error');
         const sgMail = require('@sendgrid/mail')
@@ -96,6 +97,24 @@ app.post('/registerAccount', (req,res) => {
         
     }
 
+});
+
+app.post('/signInAccount', (req,res) => {
+    const userInput = {
+        userName : req.body.userName,
+        password : req.body.password,
+    }
+    const errors = validation.loginValidation(userInput);
+
+    if (errors.errorOccured){
+        res.render('signin',{
+            pageTitle : "Sign In",
+            errorsMessage : errors
+        });    
+    } else { 
+        res.redirect('/');
+    }
+    
 });
 
 
