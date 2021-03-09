@@ -349,6 +349,7 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 sendgrid.env
-sendgrid.env
-sendgrid.env
-sendgrid.env
+
+# VUDU project
+.DS_Store
+VUDU-workspace.code-workspace
