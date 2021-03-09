@@ -102,7 +102,7 @@
 }
 
 .special-poster-container{
-  width: 130px;
+  width: auto;
   margin: 10px;
 }
 
@@ -143,3 +143,26 @@ img {vertical-align: middle;}
   to {opacity: 1}
 }
 
+@media (min-width: 769px) and (max-width: 992px) {
+  #special-top-line, 
+  #special-second-line {
+    font-size: 30px;
+  }
+  .grid-container-7{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+  }
+}
+
+@media (max-width: 768.99px) {
+  #special-top-line, 
+  #special-second-line {
+    font-size: 20px;
+  }
+  .grid-container-7{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    align-content: center;
+  }
+}
