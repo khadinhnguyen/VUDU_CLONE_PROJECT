@@ -32,7 +32,14 @@ app.get('/sign-in', (req,res) => {
 });
 
 app.get('/account-setup', (req,res) => {
+    const initialValue = {
+        firstName : "",
+        lastName : "",
+        email : "",
+        password : ""
+    }
     res.render("registration", {
+        values : initialValue,
         pageTitle : "Create Account",
     });
 });
@@ -72,6 +79,7 @@ app.post('/registerAccount', (req,res) => {
     if (errors.errorOccured){
         res.render('registration',{
             pageTitle : "Create Account",
+            values : userInput,
             errorsMessage : errors
         });    
     } else {
@@ -81,8 +89,8 @@ app.post('/registerAccount', (req,res) => {
         const msg = {
         to: userInput.email, // Change to your recipient
         from: 'nguyendkha@gmail.com', // Change to your verified sender
-        subject: 'Sending with SendGrid is Fun',
-        text: 'Testing reply email from Vudu',
+        subject: '//WEB322// Welcome to Vudu',
+        text: 'Welcome you to Vudu Community',
         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
         }
         sgMail

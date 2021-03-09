@@ -9,10 +9,10 @@
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name" id="firstName" name="firstName">
+                                <input type="text" class="form-control" value='{{values.firstName}}' placeholder="First name" id="firstName" name="firstName">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" id="lastName" name="lastName">
+                                <input type="text" class="form-control" value='{{values.lastName}}' placeholder="Last name" id="lastName" name="lastName">
                             </div>
                         </div>
                         <div class="error-message">{{errorsMessage.firstNameError}}</div>
@@ -20,11 +20,11 @@
 
                     </div>
                     <div class="mb-3">
-                        <input id="userName" class="form-control" type="email" name="userName" placeholder="email">
+                        <input id="userName" class="form-control" type="email" name="userName" value='{{values.email}}' placeholder="email">
                         <div class="error-message">{{errorsMessage.emailError}}</div>
                     </div>
                     <div class="mb-3">
-                        <input id="password" class="form-control" type="password" name="password" placeholder="password">
+                        <input id="password" class="form-control" type="password" name="password" value='{{values.password}}' placeholder="password">
                         <div class="error-message">{{errorsMessage.passwordError}}</div>
                     </div>
                     <div class="mb-3 left form-check">

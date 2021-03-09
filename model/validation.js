@@ -5,12 +5,12 @@ const validation = {
             errorOccured : false,
         };
 
-        if (userInput.firstName.length < 2 || userInput.firstName.length > 30 || userInput.firstName === undefined){
+        if (userInput.firstName.length < 2 || userInput.firstName.length > 30){
             errors.errorOccured = true;
             errors.firstNameError = "* First name must be between 2 and 30 characters long";
         }
 
-        if (userInput.lastName.length < 2 || userInput.lastName.length > 30 || userInput.lastName === undefined){
+        if (userInput.lastName.length < 2 || userInput.lastName.length > 30){
             errors.errorOccured = true;
             errors.lastNameError = "* Last name must be between 2 and 30 characters long";
         }
@@ -25,9 +25,10 @@ const validation = {
             errors.checkerError = "* You must agree to the Terms and Policies and Privacy Policy";
         }
 
-        if (userInput.password.length === 0){
+        const regularExpress = /[0-9!@#$%^&*]/;
+        if (userInput.password.length < 6 || userInput.password.length > 12 || !regularExpress.test(userInput.password)){
             errors.errorOccured = true;
-            errors.passwordError = "* Please enter your password";
+            errors.passwordError = "* Password must be between 6 and 12 characters long with at least one number or one special character !@#$%^&* ";
         }
 
         return errors;
