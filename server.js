@@ -44,6 +44,13 @@ app.get('/account-setup', (req,res) => {
     });
 });
 
+app.get('/dashboard', (req,res) => {
+    res.render('dashboard', {
+        pageTitle: "Welcome to Vudu",
+        userName : ""
+    })
+});
+
 app.get('/movie-list',(req,res) => {
     res.render('movieList', {
         pageTitle : "Movies",
@@ -97,7 +104,10 @@ app.post('/registerAccount', (req,res) => {
         .send(msg)
         .then(() => {
             console.log('Email sent');
-            res.redirect('/'); 
+            res.render('dashboard', {
+                pageTitle: "Welcome to Vudu",
+                userName : `${userInput.firstName} ${userInput.lastName}`
+            }) 
         })
         .catch((error) => {
             console.error(error)
