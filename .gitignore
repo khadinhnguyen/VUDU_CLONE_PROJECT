@@ -353,3 +353,4 @@ sendgrid.env
 # VUDU project
 .DS_Store
 VUDU-workspace.code-workspace
+/config
