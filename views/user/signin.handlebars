@@ -4,7 +4,7 @@
         <div class="form-top">
             <div class="form-header"><p class="text-center font-24 fw-bolder">Sign In To Vudu</p></div>
             <div class="form-body">
-                <form  action="/signInAccount" method="POST">
+                <form  action="/user/signInAccount" method="POST">
                     <div class="mb-3">
                         <input id="userName" class="form-control" type="email" name="userName" placeholder="email">
                         <div class="error-message">{{errorsMessage.userError}}</div>
@@ -21,7 +21,7 @@
                     </div>
                 </form>
                 <div class="account-create-button">
-                    <a href="/account-setup">Create a new Vudu Account</a>
+                    <a href="/user/account-setup">Create a new Vudu Account</a>
                 </div>
             </div>
 
