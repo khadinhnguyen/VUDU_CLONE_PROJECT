@@ -73,14 +73,14 @@ exports.movieAddValidation=(userInput,images)=> {
         errors.purchasePriceError = "* Please enter valid Purchase Price";
     }
 
-    if (images.smallPosterImg.length == 0){
-        errors.errorOccured = true;
-        errors.smallPosterImgError = "* Please upload Small Poster Image";
-    }
-    if (images.largePosterImg.length == 0){
-        errors.errorOccured = true;
-        errors.largePosterImgError = "* Please upload Large Poster Image";
-    }
+    // if (images.smallPosterImg.length == 0){
+    //     errors.errorOccured = true;
+    //     errors.smallPosterImgError = "* Please upload Small Poster Image";
+    // }
+    // if (images.largePosterImg.length == 0){
+    //     errors.errorOccured = true;
+    //     errors.largePosterImgError = "* Please upload Large Poster Image";
+    // }
     const regularExpress = /.jpg|.gifs|.pngs/;
     if (images.smallPosterImg.length > 0 && !regularExpress.test(images.smallPosterImg)){
         errors.errorOccured = true;
