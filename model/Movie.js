@@ -12,11 +12,11 @@ const movieSchema = new Schema({
         require:true
     },
     rentalPrice:{
-        type:String,
+        type:Number,
         require:true
     },
     purchasePrice:{
-        type:String,
+        type:Number,
         require:true
     },
     category:{
@@ -28,12 +28,22 @@ const movieSchema = new Schema({
         require:true
     },
     rating:{
-        type:String,
+        type:Number,
+        require:true
+    },
+    numberOfStar:{
+        type:Number,
         require:true
     },
     feature:{
         type:String,
         require:true
+    },
+    smallPosterImg:{
+        type:String,
+    },
+    largePosterImg:{
+        type:String
     },
     dateCreated:    {
         type:Date,

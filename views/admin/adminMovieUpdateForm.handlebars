@@ -2,33 +2,31 @@
     <div class="form-container">
         <div></div>
         <div class="form-top">
-            <div class="form-header"><p class="text-center font-24 fw-bolder">Add a New Movie/TV to Database </p></div>
+            <div class="form-header"><p class="text-center font-24 fw-bolder">Update Movie or TV</p></div>
             <div class="form-body">
-                <form  action="/admin/addMovieTv" method="POST" enctype="multipart/form-data">
-                    <div class="mb-3">
-
-                        
+                <form  action="/admin/updateMovieTv/{{_id}}?method=PUT" enctype="multipart/form-data" method="POST">
+                    <div class="mb-3">                        
                             {{!-- <div class="col"> --}}
                                 <label>Title</label>
-                                <input type="text" class="form-control" value='{{movie.title}}' id="title" name="title">
+                                <input type="text" class="form-control" value='{{title}}' id="title" name="title">
                                 <div class="error-message">{{errors.titleError}}</div>
                                 <br>
                             {{!-- </div> --}}
                             {{!-- <div class="col"> --}}
                                 <label>Synopsis</label>
-                                <textarea type="text" class="form-control" id="synopsis" name="synopsis">{{movie.synopsis}}</textarea>
+                                <textarea type="text" class="form-control" id="synopsis" name="synopsis">{{synopsis}}</textarea>
                                 <div class="error-message">{{errors.synopsisError}}</div>
                             {{!-- </div> --}}
                             <br>
                             <div class="row">
                                 <div class="col">
                                     <label for="">Rental Price Per Day</label>
-                                    <input type="number" step="0.01" class="form-control" value={{movie.rentalPrice}} placeholder="$" id="rentalPrice" name="rentalPrice">
+                                    <input type="number" step="0.01" class="form-control" value={{rentalPrice}} placeholder="$" id="rentalPrice" name="rentalPrice">
                                     <div class="error-message">{{errors.rentalPriceError}}</div>
                                 </div>
                                 <div class="col">
                                     <label>Purchase Price</label>
-                                    <input type="number" step="0.01" class="form-control" value={{movie.purchasePrice}} placeholder="$" id="purchasePrice" name="purchasePrice">
+                                    <input type="number" step="0.01" class="form-control" value={{purchasePrice}} placeholder="$" id="purchasePrice" name="purchasePrice">
                                     <div class="error-message">{{errors.purchasePriceError}}</div>
                                 </div>
                             </div>
@@ -36,18 +34,18 @@
                             <div class="col">
                                 <label>Category</label>
                                 <select name="category">
-                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}}value="movie">Movie</option>
-                                    <option {{#if_eq movie.category "tv"}}selected{{/if_eq}} value="tv">TV</option>
+                                    <option {{#if_eq category "movie"}}selected{{/if_eq}}value="movie">Movie</option>
+                                    <option {{#if_eq category "tv"}}selected{{/if_eq}} value="tv">TV</option>
                                 </select>
                             </div>
                             <br>
                             <div class="col">
                                 <label>Genre</label>
                                 <select name="genre">
-                                    <option {{#if_eq movie.genre "action"}}selected{{/if_eq}} value="action">Action</option>
-                                    <option {{#if_eq movie.genre "scri-fi"}}selected{{/if_eq}} value="scri-fi">Scri-Fi</option>
-                                    <option {{#if_eq movie.genre "family"}}selected{{/if_eq}} value="family">Family</option>
-                                    <option {{#if_eq movie.genre "kid"}}selected{{/if_eq}} value="kid">Kid</option>
+                                    <option {{#if_eq genre "action"}}selected{{/if_eq}} value="action">Action</option>
+                                    <option {{#if_eq genre "scri-fi"}}selected{{/if_eq}} value="scri-fi">Scri-Fi</option>
+                                    <option {{#if_eq genre "family"}}selected{{/if_eq}} value="family">Family</option>
+                                    <option {{#if_eq genre "kid"}}selected{{/if_eq}} value="kid">Kid</option>
                                 </select>
                             </div>
                             <br>                         
@@ -56,11 +54,11 @@
                                     <label>Home Page Feature</label>
                                 </div>                                
                                 <div class="col">
-                                    <input type="radio" id="yes" name="feature" value="yes" {{#if_eq movie.feature "yes"}}checked{{/if_eq}} >
+                                    <input type="radio" id="yes" name="feature" value="yes" {{#if_eq feature "yes"}}checked{{/if_eq}} >
                                     <label for="yes">Yes</label>
                                 </div>
                                 <div class="col">
-                                    <input type="radio" id="no" name="feature" value="no" {{#if_eq movie.feature "no"}}checked{{/if_eq}}>
+                                    <input type="radio" id="no" name="feature" value="no" {{#if_eq feature "no"}}checked{{/if_eq}}>
                                     <label for="no">No</label>
                                 </div>
                             </div>
@@ -68,16 +66,16 @@
                             <div class="col">
                                 <label>Rating</label>
                                 <select name="rating">
-                                    <option {{#if_eqNum movie.rating 1}}selected{{/if_eqNum}} value=1>1</option>
-                                    <option {{#if_eqNum movie.rating 2}}selected{{/if_eqNum}} value=2>2</option>
-                                    <option {{#if_eqNum movie.rating 3}}selected{{/if_eqNum}} value=3>3</option>
-                                    <option {{#if_eqNum movie.rating 4}}selected{{/if_eqNum}} value=4>4</option>
-                                    <option {{#if_eqNum movie.rating 5}}selected{{/if_eqNum}} value=5>5</option>
+                                    <option {{#if_eqNum rating 1}}selected{{/if_eqNum}} value=1>1</option>
+                                    <option {{#if_eqNum rating 2}}selected{{/if_eqNum}} value=2>2</option>
+                                    <option {{#if_eqNum rating 3}}selected{{/if_eqNum}} value=3>3</option>
+                                    <option {{#if_eqNum rating 4}}selected{{/if_eqNum}} value=4>4</option>
+                                    <option {{#if_eqNum rating 5}}selected{{/if_eqNum}} value=5>5</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label>Number of stars</label>
-                                <input type="number" class="form-control" value={{movie.numberOfStar}} id="numberOfStar" name="numberOfStar">
+                                <input type="number" class="form-control" value={{numberOfStar}} id="numberOfStar" name="numberOfStar">
                                 <div class="error-message">{{errors.numberOfStar}}</div>
                             </div>
                             <br>
@@ -98,7 +96,7 @@
 
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="form-button">Add</button>
+                        <button type="submit" class="form-button">Update</button>
                     </div>
                 </form>
             </div>

@@ -73,6 +73,11 @@ exports.movieAddValidation=(userInput,images)=> {
         errors.purchasePriceError = "* Please enter valid Purchase Price";
     }
 
+    if (userInput.numberOfStar <=0){
+        errors.errorOccured = true;
+        errors.purchasePriceError = "* Please enter valid number of Star";
+    }
+
     // if (images.smallPosterImg.length == 0){
     //     errors.errorOccured = true;
     //     errors.smallPosterImgError = "* Please upload Small Poster Image";

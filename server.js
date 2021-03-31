@@ -49,6 +49,15 @@ app.set('view engine', 'handlebars');
 
 app.use(fileUpload());
 
+app.use((req,res,next)=>{
+    if(req.query.method=="PUT"){
+        req.method = "PUT";
+    } else if (req.query.method=="DELETE"){
+        req.method = "DELETE";
+    }
+    next()
+});
+
 // use express-session right before the route
 app.use(session({
   secret: `${process.env.SECRET_KEY}`, // secret key - never dispose secret key to any one
