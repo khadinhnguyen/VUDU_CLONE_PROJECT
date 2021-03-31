@@ -20,7 +20,15 @@ const userSchema = new Schema({
     password:{
         type:String,
         require:true
-    } 
+    },
+    type:{
+        type:String,
+        default:'user'
+    },
+    dateCreated:{
+        type:Date,
+        default:Date.now()
+    },
 }) 
  
 userSchema.pre('save', function(next){

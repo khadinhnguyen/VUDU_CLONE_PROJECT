@@ -32,45 +32,94 @@ router.post('/registerAccount', (req,res) => {
         password : req.body.password,
         checker : req.body.termAndPolicyCheck
     }
-    const errors = registerValidation(userInput);
+    var errors = registerValidation(userInput);
+    userModel.findOne({email:userInput.email})
+    .then((result)=>{
+        console.log(result); 
+        if(result != null){
+            errors.errorOccured = true;
+            errors.emailError = "Email is already used. Please enter different email";
+            console.log("email found");
+            console.log(errors);
+        } 
 
-    if (errors.errorOccured){
-        res.render('./user/registration',{
-            pageTitle : "Create Account",
-            values : userInput,
-            errorsMessage : errors
-        });    
-    } else {
-        console.log('no error');
-        // save userinformation into database
-        const user = new userModel(userInput);
-        user.save()
-        .then(()=>{
-
-            const sgMail = require('@sendgrid/mail')
-            sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-            const msg = {
-            to: userInput.email, // Change to your recipient
-            from: 'nguyendkha@gmail.com', // Change to your verified sender
-            subject: '//WEB322// Welcome to Vudu',
-            text: 'Welcome you to Vudu Community',
-            html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-            }
-            sgMail
-            .send(msg)
-            .then(() => {
-                console.log('Email sent');
-                res.render('dashboard', {
-                    pageTitle: "Welcome to Vudu",
-                    userName : `${userInput.firstName} ${userInput.lastName}`
-                }) 
+        if (errors.errorOccured){
+            res.render('./user/registration',{
+                pageTitle : "Create Account",
+                values : userInput,
+                errorsMessage : errors
+            });    
+        } else {
+            console.log('no error');
+            // save userinformation into database
+            const user = new userModel(userInput);
+            user.save()
+            .then(()=>{
+    
+                const sgMail = require('@sendgrid/mail')
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+                const msg = {
+                to: userInput.email, // Change to your recipient
+                from: 'nguyendkha@gmail.com', // Change to your verified sender
+                subject: '//WEB322// Welcome to Vudu',
+                text: 'Welcome you to Vudu Community',
+                html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+                }
+                sgMail
+                .send(msg)
+                .then(() => {
+                    console.log('Email sent');
+                    res.redirect('/user/sign-in');
+                })
+                .catch(err=>console.error(`Error while emailing confirmation ${err}`))
+                
             })
-            .catch(err=>console.error(`Error while emailing confirmation ${err}`))
+            .catch(err=>console.log(`Error while inserting user registration into database ${err}`));            
+        }
+
+    })
+    .catch(err=>console.log(`err when validate email ${err}`));
+
+
+
+
+    // if (errors.errorOccured){
+    //     res.render('./user/registration',{
+    //         pageTitle : "Create Account",
+    //         values : userInput,
+    //         errorsMessage : errors
+    //     });    
+    // } else {
+    //     console.log('no error');
+    //     // save userinformation into database
+    //     const user = new userModel(userInput);
+    //     user.save()
+    //     .then(()=>{
+
+    //         const sgMail = require('@sendgrid/mail')
+    //         sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    //         const msg = {
+    //         to: userInput.email, // Change to your recipient
+    //         from: 'nguyendkha@gmail.com', // Change to your verified sender
+    //         subject: '//WEB322// Welcome to Vudu',
+    //         text: 'Welcome you to Vudu Community',
+    //         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    //         }
+    //         sgMail
+    //         .send(msg)
+    //         .then(() => {
+    //             console.log('Email sent');
+    //             res.render('dashboard', {
+    //                 pageTitle: "Welcome to Vudu",
+    //                 userName : `${userInput.firstName} ${userInput.lastName}`
+    //             }) 
+    //         })
+    //         .catch(err=>console.error(`Error while emailing confirmation ${err}`))
             
-        })
-        .catch(err=>console.log(`Error while inserting user registration into database ${err}`));
+    //     })
+    //     .catch(err=>console.log(`Error while inserting user registration into database ${err}`));
         
-    }
+    // }
 });
 
 router.post('/signInAccount', (req,res) => {
