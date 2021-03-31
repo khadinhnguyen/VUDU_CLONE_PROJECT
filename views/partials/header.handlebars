@@ -1,0 +1,79 @@
+<header>
+        <div class="container">            
+            <div class="header-wrapper">
+                <div class="header_logo_wrapper">
+                    <a href="/">
+                        <img src="https://www.vudu.com/content/images/logo.svg" alt="Vudu logo" class="home-logo">
+                    </a>
+                </div>
+                <nav>
+                    <ul class="header-menu">
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="/movie-list">Movies</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="/tv-list">TV</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="">Free</a>
+                            </div>
+                        </li>
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="">My Vudu</a>
+                            </div>
+                        </li>
+                        {{#if admin}}
+                        <li class="header-menu-list">
+                            <div class="header-menu-list-wrapper">
+                                <a href="/admin/allMovieTv">All Movie/TV (Admin only)</a>
+                            </div>
+                        </li>
+                        {{/if}}
+                    </ul>                               
+                </nav>
+                <div class="header-user-wrapper">
+                    <div class="header-account-wrapper">
+                        <div class="header-account-item dropdown">
+                            <div class="div-dropbtn">
+                                <button class="dropbtn">Redeem</button>
+                            </div>
+                                <div class="dropdown-content">
+                                    <a href="#">Digital Copy</a>
+                                    <a href="#">Vudu Code</a>
+                                </div>
+                        </div>
+                        <div class="header-account-item dropdown">
+                            {{#if user}}
+                            <div class="div-dropbtn">
+                                <a href="/user/sign-in">
+                                    <button class="dropbtn">Log Out</button>
+                                </a>
+                            </div>
+                            {{else}}
+                            <div class="div-dropbtn">
+                                <a href="/user/sign-in">
+                                    <button class="dropbtn">Sign In</button>
+                                </a>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="/user/sign-in">Sign In</a>
+                                <a href="/user/account-setup">Create Account</a>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="header-search">
+                        <a href="">
+                            <span class="material-icons md-24">search</span>
+                        </a>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </header>
