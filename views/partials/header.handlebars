@@ -68,11 +68,22 @@
                             {{/if}}
                         </div>
                     </div>
-                    <div class="header-search">
-                        <a href="">
+                    {{!-- <div class="header-search">
+                        <input type="text" placeholder="Search"> 
+                        <a href="/search"> 
+                            
                             <span class="material-icons md-24">search</span>
                         </a>
+                    </div> --}}
+                    <div class="header-search">
+                        <form action="/search-result" method="POST">
+                            <input type="search" placeholder="Search" name="searchText">
+                            <button id="search-button" type="submit">
+                                <span class="material-icons md-24">search</span>
+                            </button>
+                        </form>
                     </div>
+
                 </div>
             </div>   
         </div>

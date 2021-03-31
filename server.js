@@ -75,9 +75,7 @@ app.use((req,res,next)=>{
         type : "admin"
     }
     res.locals.user = req.session.userInfo; 
-    console.log(res.locals.user);
     if(res.locals.user.type=="admin"){
-        console.log("admin local is create")
         res.locals.admin = true;
     }
 

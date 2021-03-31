@@ -54,7 +54,7 @@ router.get('/allMovieTv', (req,res)=>{
                 largePosterImg:result.largePosterImg
             }
         });
-        res.render('./admin/allMovieTvList',{
+        res.render('./general/allMovieTvList',{
             pageTitle : "All Movie and TV (Admin Only)",
             movies
 

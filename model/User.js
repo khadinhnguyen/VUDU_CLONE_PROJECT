@@ -12,7 +12,7 @@ const userSchema = new Schema({
     lastName : {
         type:String,
         require:true
-    },
+    }, 
     email:{
         type:String,
         require:true
@@ -20,9 +20,9 @@ const userSchema = new Schema({
     password:{
         type:String,
         require:true
-    }
-})
-
+    } 
+}) 
+ 
 userSchema.pre('save', function(next){
     bcrypt.genSalt(10)
     .then((salt)=>{

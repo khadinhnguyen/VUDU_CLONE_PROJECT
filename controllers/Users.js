@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const userModel = require('../model/User');
 
-const validation = require('../model/validation.js');
+const {registerValidation, loginValidation} = require('../model/validation.js');
 
 
 router.get('/sign-in', (req,res) => {
@@ -32,7 +32,7 @@ router.post('/registerAccount', (req,res) => {
         password : req.body.password,
         checker : req.body.termAndPolicyCheck
     }
-    const errors = validation.registerValidation(userInput);
+    const errors = registerValidation(userInput);
 
     if (errors.errorOccured){
         res.render('./user/registration',{
@@ -78,7 +78,7 @@ router.post('/signInAccount', (req,res) => {
         userName : req.body.userName,
         password : req.body.password,
     }
-    const errors = validation.loginValidation(userInput);
+    const errors = loginValidation(userInput);
 
     if (errors.errorOccured){
         res.render('./user/signin',{
