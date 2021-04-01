@@ -7,11 +7,11 @@
                 <form  action="/user/signInAccount" method="POST">
                     <div class="mb-3">
                         <input id="userName" class="form-control" type="email" name="userName" placeholder="email">
-                        <div class="error-message">{{errorsMessage.userError}}</div>
+                       
                     </div>
                     <div class="mb-3">
                         <input id="password" class="form-control" type="password" name="password" placeholder="password">
-                        <div class="error-message">{{errorsMessage.passwordError}}</div>
+                        <div class="error-message">{{errors}}</div>
                     </div>
                     <div class="mb-3 left">
                         <a href=""lab>Forgot your Vudu password?</a>

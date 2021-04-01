@@ -1,3 +1,5 @@
+const userModel = require("./User");
+
 exports.registerValidation=(userInput)=> {
     var errors = {
         errorOccured : false,
@@ -45,6 +47,8 @@ exports.loginValidation=(userInput)=>{
         errors.errorOccured = true;
         errors.passwordError = "* Please enter your password";
     }
+    
+
     return errors;
 };
 

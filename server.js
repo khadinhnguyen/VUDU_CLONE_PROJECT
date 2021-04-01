@@ -11,9 +11,9 @@ require('dotenv').config({path:'./config/keys.env'});
 
 //Import router objects
 const adminRouter = require('./controllers/Admin');
-const userRouter = require('./controllers/Users');
+const userRouter = require('./controllers/User');
 const generalRouter = require('./controllers/General');
-const { options } = require('./controllers/Users');
+const { options } = require('./controllers/User');
 
 //Creation of app object
 var app = express();
@@ -38,7 +38,11 @@ app.engine("handlebars",exphbs(
             if_eqBool : function(a,b,options)
             {
                 return a==b?options.fn(this) : options.inverse(this);
-            }
+            },
+            upperCase : function(str)
+            {
+                return str.toUpperCase();
+            } 
 
         }
     }
@@ -69,15 +73,18 @@ app.use(session({
 // define user as global template variable
 app.use((req,res,next)=>{
     //res.locals.user = req.session.userInfo;
-    req.session.userInfo = {
-        firstName : "Kha",
-        lastName : "Nguyen",
-        type : "admin"
-    }
+    // req.session.userInfo = {
+    //     firstName : "Kha",
+    //     lastName : "Nguyen",
+    //     type : "admin"
+    // }
     res.locals.user = req.session.userInfo; 
-    if(res.locals.user.type=="admin"){
-        res.locals.admin = true;
+    if(res.locals.user != undefined){
+        if(res.locals.user.type=="admin"){
+            res.locals.admin = true;
+        }
     }
+
 
     next();
 })

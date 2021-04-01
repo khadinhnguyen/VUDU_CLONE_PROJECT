@@ -50,7 +50,7 @@ router.get('/:id', (req,res) => {
         res.render("./general/productDescription", {_id,title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature,smallPosterImg,largePosterImg
         });
     })
-    .catch(err=>console.log(`err when find one movie ${err}`));
+    .catch(err=>console.log(`err wwhen find one movie ${err}`));
     const product = movie_ultil.getMovie(req.params.id); 
 
 });

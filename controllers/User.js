@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const userModel = require('../model/User');
+const bcrypt = require('bcryptjs');
 
 const {registerValidation, loginValidation} = require('../model/validation.js');
 
@@ -9,6 +10,10 @@ router.get('/sign-in', (req,res) => {
     res.render("./user/signin", {
         pageTitle : "Sign In",
     });
+});
+
+router.get('/dashboard',(req,res) => {
+    res.render("./user/dashboard");
 });
 
 router.get('/account-setup', (req,res) => {
@@ -23,6 +28,11 @@ router.get('/account-setup', (req,res) => {
         pageTitle : "Create Account",
     });
 });
+
+router.get('/logout', (req,res)=>{
+    req.session.destroy();
+    res.redirect('/');
+})
 
 router.post('/registerAccount', (req,res) => {
     const userInput = {
@@ -123,20 +133,60 @@ router.post('/registerAccount', (req,res) => {
 });
 
 router.post('/signInAccount', (req,res) => {
-    const userInput = {
-        userName : req.body.userName,
-        password : req.body.password,
-    }
-    const errors = loginValidation(userInput);
+    // const userInput = {
+    //     userName : req.body.userName,
+    //     password : req.body.password,
+    // }
+    // const errors = loginValidation(userInput);
 
-    if (errors.errorOccured){
-        res.render('./user/signin',{
-            pageTitle : "Sign In",
-            errorsMessage : errors
-        });    
-    } else {  
-        res.redirect('/');
-    }
+    // if (errors.errorOccured){
+    //     res.render('./user/signin',{
+    //         pageTitle : "Sign In",
+    //         errorsMessage : errors
+    //     });    
+    // } else {  
+    //     res.redirect('/');
+    // }
+
+
+    userModel.findOne({email:req.body.userName})
+    .then(user=>{
+        // email not found
+        const errors = [];
+        if(user==null){
+            errors.push("Sorry, your email and/or password incorrect");
+            res.render("./user/signin", {
+                pageTitle: "Sign In",
+                errors
+            })
+        }
+        // email is found
+        else{            
+            bcrypt.compare(req.body.password, user.password)
+            .then(isMatched=>{
+                if(isMatched){
+                    // if password is true -> create a session and redirect
+                    // create a session called userInfo -> userInfo is global variable 
+                    req.session.userInfo = user;
+                    //dashBoardLoader(req,res);
+                    if(user.type == "admin"){
+                        res.redirect('/admin/dashboard');
+                    }else{
+                       res.redirect('/'); 
+                    }
+                    
+
+                } else {
+                    errors.push("Sorry, your email and/or password incorrect");
+                    res.render("./user/signin", {
+                        errors
+                    })
+                }
+            })
+            .catch(err=>console.log(`error with decrypt password ${err}`));
+        }
+    })
+    .catch(err=>console.log(`Error when trying to login ${err}`));
     
 });
 
