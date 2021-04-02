@@ -148,7 +148,7 @@ router.post('/signInAccount', (req,res) => {
     //     res.redirect('/');
     // }
 
-
+ 
     userModel.findOne({email:req.body.userName})
     .then(user=>{
         // email not found

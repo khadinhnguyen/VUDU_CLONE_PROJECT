@@ -82,6 +82,8 @@ app.use((req,res,next)=>{
     if(res.locals.user != undefined){
         if(res.locals.user.type=="admin"){
             res.locals.admin = true;
+        }else{
+            res.locals.normalUser = true;
         }
     }
 

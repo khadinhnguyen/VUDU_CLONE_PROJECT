@@ -36,7 +36,7 @@
                             <div class="col">
                                 <label>Category</label>
                                 <select name="category">
-                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}}value="movie">Movie</option>
+                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}} value="movie">Movie</option>
                                     <option {{#if_eq movie.category "tv"}}selected{{/if_eq}} value="tv">TV</option>
                                 </select>
                             </div>
@@ -51,18 +51,14 @@
                                 </select>
                             </div>
                             <br>                         
-                            <div class="row">
-                                <div class="col">
-                                    <label>Home Page Feature</label>
-                                </div>                                
-                                <div class="col">
-                                    <input type="radio" id="yes" name="feature" value="yes" {{#if_eq movie.feature "yes"}}checked{{/if_eq}} >
-                                    <label for="yes">Yes</label>
-                                </div>
-                                <div class="col">
-                                    <input type="radio" id="no" name="feature" value="no" {{#if_eq movie.feature "no"}}checked{{/if_eq}}>
-                                    <label for="no">No</label>
-                                </div>
+                            <div class="col">
+                                <label>Featured</label>
+                                <select name="feature">
+                                    <option {{#if_eq movie.feature "rental"}}selected{{/if_eq}} value="rental">Rental</option>
+                                    <option {{#if_eq movie.feature "week-deal"}}selected{{/if_eq}} value="week-deal">Deal Of The Week</option>
+                                    <option {{#if_eq movie.feature "new-release"}}selected{{/if_eq}} value="new-release">New Release</option>
+                                    <option {{#if_eq movie.feature "tv-season"}}selected{{/if_eq}} value="tv-season">TV Season</option>
+                                </select>
                             </div>
                             <br>
                             <div class="col">

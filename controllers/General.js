@@ -30,20 +30,61 @@ router.get('/dashboard', (req,res) => {
 });
 
 router.get('/movie-list',(req,res) => {
-    res.render('./general/movieList', {
-        pageTitle : "Movies",
-        movies : movie_ultil.getTypedMovies('movie'),
+    movieModel.find({"category":"Movie"})
+    .then((results)=>{
+        movies = results.map(result=>{
+            return{
+                id:result._id,
+                title:result.title,
+                synopsis:result.synopsis,
+                rentalPrice:result.rentalPrice,
+                purchasePrice:result.purchasePrice,
+                category:result.category,
+                genre:result.genre,
+                rating:result.rating,
+                numberOfStar:result.numberOfStar,
+                feature:result.feature,
+                smallPosterImg:result.smallPosterImg,
+                largePosterImg:result.largePosterImg
+            }
+        })
+        res.render('./general/allMovieTvList', {
+            pageTitle : "Movies",
+            movies
+        })
     })
+    .catch(err=>console.log(`Err when retrieve movei list ${err}`));
+
 });
 
 router.get('/tv-list', (req,res) => {
-    res.render('./general/tvList', {
-        pageTitle : "TVs",
-        TVs : movie_ultil.getTypedMovies('tv')
+    movieModel.find({"category":"tv"})
+    .then((results)=>{
+        movies = results.map(result=>{
+            return{
+                id:result._id,
+                title:result.title,
+                synopsis:result.synopsis,
+                rentalPrice:result.rentalPrice,
+                purchasePrice:result.purchasePrice,
+                category:result.category,
+                genre:result.genre,
+                rating:result.rating,
+                numberOfStar:result.numberOfStar,
+                feature:result.feature,
+                smallPosterImg:result.smallPosterImg,
+                largePosterImg:result.largePosterImg
+            }
+        })
+        res.render('./general/allMovieTvList', {
+            pageTitle : "TVs",
+            movies
+        })
     })
+    .catch(err=>console.log(`Err when retrieve movei list ${err}`));
 });
 
-router.get('/:id', (req,res) => {
+router.get('/movie/:id', (req,res) => {
     movieModel.findById(req.params.id)
     .then((movie)=>{
         const {_id,title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature,smallPosterImg,largePosterImg} = movie;
