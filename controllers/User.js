@@ -4,6 +4,8 @@ const userModel = require('../model/User');
 const bcrypt = require('bcryptjs');
 
 const {registerValidation, loginValidation} = require('../model/validation.js');
+const movieModel = require('../model/Movie');
+const cartModel = require('../model/Cart');
 
 
 router.get('/sign-in', (req,res) => {
@@ -13,7 +15,30 @@ router.get('/sign-in', (req,res) => {
 });
 
 router.get('/dashboard',(req,res) => {
-    res.render("./user/dashboard");
+    console.log(req.session.userInfo)
+    cartModel.find({userId:req.session.userInfo._id})
+    .then((results)=>{
+        if(results){
+            const carts = results.map(result=>{
+                return{
+                    _id:result._id,
+                    title:result.title,
+                    userId:result.userId,
+                    movieId:result.movieId,
+                    type:result.type,
+                    price:result.price 
+                }
+            })
+            res.render("./user/dashboard",{
+                carts
+            });
+        } else {
+            res.render("./user/dashboard");
+        }
+
+    })
+    .catch(err=>console.log(`err when retrive cart${err}`));
+
 });
 
 router.get('/account-setup', (req,res) => {
@@ -168,7 +193,6 @@ router.post('/signInAccount', (req,res) => {
                     // if password is true -> create a session and redirect
                     // create a session called userInfo -> userInfo is global variable 
                     req.session.userInfo = user;
-                    //dashBoardLoader(req,res);
                     if(user.type == "admin"){
                         res.redirect('/admin/dashboard');
                     }else{
@@ -190,5 +214,28 @@ router.post('/signInAccount', (req,res) => {
     
 });
 
+router.post('/addRent/:id',(req,res)=>{
+    movieModel.findById(req.params.id)
+    .then((movie)=>{
+        const {_id,rentalPrice} = movie;
+        const selectedMovie = { 
+            title:movie.title,
+            userId:req.session.userInfo._id,
+            movieId:movie._id,
+            type:"Rental",
+            price:movie.rentalPrice
+        }
+        const cart = new cartModel(selectedMovie)
+        cart.save()
+        .then(()=>{
+            res.redirect('/');
+        })
+        .catch(err=>console.log(`err when insert cart to database ${err}`))
+    })
+    .catch(err=>console.log(`Err when add rental to cart ${err}`));
+
+}); 
+
 
 module.exports=router;
+

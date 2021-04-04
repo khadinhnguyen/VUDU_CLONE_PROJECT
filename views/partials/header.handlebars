@@ -23,15 +23,17 @@
                                 <a href="">Free</a>
                             </div>
                         </li>
+                        {{#if user}}
                         <li class="header-menu-list">
                             <div class="header-menu-list-wrapper">
-                                <a href="">My Vudu</a>
+                                <a href="/user/dashboard">{{#upperCase user.firstName}} {{/upperCase}} Vudu Dashboard</a>
                             </div>
                         </li>
+                        {{/if}}
                         {{#if admin}}
                         <li class="header-menu-list">
                             <div class="header-menu-list-wrapper">
-                                <a href="/admin/allMovieTv">All Movie/TV (Admin only)</a>
+                                <a href="/admin/dashboard">Admin Dashboard</a>
                             </div>
                         </li>
                         {{/if}}
@@ -51,7 +53,7 @@
                         <div class="header-account-item dropdown">
                             {{#if user}}
                             <div class="div-dropbtn">
-                                <a href="/user/sign-in">
+                                <a href="/user/logout">
                                     <button class="dropbtn">Log Out</button>
                                 </a>
                             </div>
@@ -75,12 +77,21 @@
                             <span class="material-icons md-24">search</span>
                         </a>
                     </div> --}}
-                    <div class="header-search">
+                    <div class="d-flex">
                         <form action="/search-result" method="POST">
-                            <input type="search" placeholder="Search" name="searchText">
-                            <button id="search-button" type="submit">
+                            <div class="d-flex">
+
+                            <div>
+                                <input type="search" placeholder="Search" name="searchText">
+                            </div>
+                            <div>
+                                   <button id="search-button" type="submit">
                                 <span class="material-icons md-24">search</span>
                             </button>
+                            </div>
+                            </div>
+
+                         
                         </form>
                     </div>
 

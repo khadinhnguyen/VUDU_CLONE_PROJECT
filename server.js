@@ -72,16 +72,18 @@ app.use(session({
 
 // define user as global template variable
 app.use((req,res,next)=>{
-    //res.locals.user = req.session.userInfo;
+    
     // req.session.userInfo = {
     //     firstName : "Kha",
     //     lastName : "Nguyen",
-    //     type : "admin"
+    //     type : "user"
     // }
+
     res.locals.user = req.session.userInfo; 
+
     if(res.locals.user != undefined){
         if(res.locals.user.type=="admin"){
-            res.locals.admin = true;
+            res.locals.admin = true; 
         }else{
             res.locals.normalUser = true;
         }
