@@ -6,6 +6,7 @@ const movieModel = require('../model/Movie');
 const validation = require('../model/validation.js');
 const movie_ultil = require('../model/movie_ultility');
 const { movieAddValidation} = require('../model/validation')
+const {retrieveMovieById} = require('../middleware/movieRetrieve.js');
 
 router.get('/addMovieTv', (req,res) => {
     const movie = {
@@ -75,25 +76,27 @@ router.post('/addMovieTv', (req,res)=>{
         genre: req.body.genre,
         rating: req.body.rating,
         numberOfStar:req.body.numberOfStar,
-        feature: req.body.feature
+        feature: req.body.feature,
+        smallPosterImg: "",
+        largePosterImg: ""
     }
 
-    const imgUpload = {
-        smallPosterImg: "",
-        largePosterImg: "",
-    };
+    // const imgUpload = {
+    //     smallPosterImg: "",
+    //     largePosterImg: "",
+    // };
     if(req.files){
         if(req.files.smallPosterImg){
             console.log(path.parse(req.files.smallPosterImg.name).ext)
-            imgUpload.smallPosterImg = path.parse(req.files.smallPosterImg.name).ext
+            newMovie.smallPosterImg = path.parse(req.files.smallPosterImg.name).ext
         }
         if(req.files.largePosterImg){
             console.log(path.parse(req.files.largePosterImg.name).ext)
-            imgUpload.largePosterImg = path.parse(req.files.largePosterImg.name).ext
+            newMovie.largePosterImg = path.parse(req.files.largePosterImg.name).ext
         }        
     }
     
-    const errors = movieAddValidation(newMovie,imgUpload);
+    const errors = movieAddValidation(newMovie);
     if(errors.errorOccured){
         res.render("./admin/adminMovieAddForm", {
             pageTitle : "Add Movie or TV",
@@ -132,7 +135,10 @@ router.post('/addMovieTv', (req,res)=>{
 
 });
 
-router.put('/updateMovieTv/:id',(req,res)=>{
+router.put('/updateMovieTv/:id',retrieveMovieById, (req,res)=>{
+    let smallImgUpdate = false;
+    let largeImgUpdate = false;
+
     const updatedMovie = {
         title: req.body.title,
         synopsis: req.body.synopsis,
@@ -142,24 +148,25 @@ router.put('/updateMovieTv/:id',(req,res)=>{
         genre: req.body.genre,
         rating: req.body.rating,
         numberOfStar:req.body.numberOfStar,
-        feature: req.body.feature
+        feature: req.body.feature,
+        smallPosterImg: req.movie.smallPosterImg,
+        largePosterImg: req.movie.largePosterImg
     }
-    const imgUpload = {
-        smallPosterImg: "",
-        largePosterImg: "",
-    };
+
     if(req.files){
         if(req.files.smallPosterImg){
-            console.log(path.parse(req.files.smallPosterImg.name).ext)
-            imgUpload.smallPosterImg = path.parse(req.files.smallPosterImg.name).ext
+            updatedMovie.smallPosterImg = `small_poster_pic_${req.params.id}${path.parse(req.files.smallPosterImg.name).ext}`;
+            smallImgUpdate = true;
+            req.files.smallPosterImg.mv(`public/img/movie/${updatedMovie.smallPosterImg}`).catch(err=>console.log(`Err when .mv small Image ${err}`));
         }
         if(req.files.largePosterImg){
-            console.log(path.parse(req.files.largePosterImg.name).ext)
-            imgUpload.largePosterImg = path.parse(req.files.largePosterImg.name).ext
+            updatedMovie.largePosterImg = `large_poster_pic_${req.params.id}${path.parse(req.files.smallPosterImg.name).ext}`;
+            largeImgUpdate = true;
+            req.files.largePosterImg.mv(`public/img/movie/${updatedMovie.largePosterImg}`).catch(err=>console.log(`Err when .mv large Image ${err}`));
         }        
     }
 
-    const errors = movieAddValidation(updatedMovie,imgUpload);
+    const errors = movieAddValidation(updatedMovie);
     if(errors.errorOccured){
         const {title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature} = updatedMovie;
         res.render("./admin/adminMovieUpdateForm", {
@@ -167,90 +174,18 @@ router.put('/updateMovieTv/:id',(req,res)=>{
             errors,
             _id:req.params.id,
             title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature
+
         });
     }else{
-        console.log("sucessful update");
-        res.redirect('/');
-
-
+        console.log("to be update");
         movieModel.updateOne({_id:req.params.id}, updatedMovie)
-        .then((movie)=>{
-            if(imgUpload.smallPosterImg.length > 0 && imgUpload.largePosterImg.length == 0){
-                req.files.smallPosterImg.name = `small_poster_pic_${movie._id}${path.parse(req.files.smallPosterImg.name).ext}`;
-                req.files.smallPosterImg.mv(`public/img/movie/${req.files.smallPosterImg.name}`)
-                .then(()=>{
-                    movieModel.updateOne({_id:req.params.id}, {smallPosterImg:req.files.smallPosterImg.name})
-                    .then(()=>{
-                        console.log('movie is successfully updated with small Poster');
-                        res.redirect('/admin/allMovieTV'); 
-                    })
-                    .catch(err=>consolee.log(`err: ${err}`));
-                })
-                .catch(err=>console.log(`err ${err}`))
-            } else if(imgUpload.smallPosterImg.length == 0 && imgUpload.largePosterImg.length > 0){
-                req.files.largePosterImg.name = `small_poster_pic_${movie._id}${path.parse(req.files.largePosterImg.name).ext}`;
-                req.files.largePosterImg.mv(`public/img/movie/${req.files.largePosterImg.name}`)
-                .then(()=>{
-                    movieModel.updateOne({_id:req.params.id}, {largePosterImg:req.files.largePosterImg.name})
-                    .then(()=>{
-                        console.log('movie is successfully updated with large Poster');
-                        res.redirect('/admin/allMovieTV'); 
-                    })
-                    .catch(err=>consolee.log(`err: ${err}`));
-                })
-                .catch(err=>console.log(`err ${err}`))
-            } else if(imgUpload.smallPosterImg.length > 0 && imgUpload.largePosterImg.length > 0){
-
-                req.files.smallPosterImg.name = `small_poster_pic_${movie._id}${path.parse(req.files.smallPosterImg.name).ext}`;
-                req.files.largePosterImg.name = `large_poster_pic_${movie._id}${path.parse(req.files.smallPosterImg.name).ext}`;
-                req.files.smallPosterImg.mv(`public/img/movie/${req.files.smallPosterImg.name}`)        
-                .then(()=>{
-                    req.files.largePosterImg.mv(`public/img/movie/${req.files.largePosterImg.name}`)
-                    .then(()=>{
-                        movieModel.updateOne({_id:req.params.id},{
-                            smallPosterImg:req.files.smallPosterImg.name,
-                            largePosterImg:req.files.largePosterImg.name
-                        })
-                        .then(()=>{
-                            console.log('movie is successfully save');
-                            res.redirect('/admin/addMovieTV'); 
-                        })
-                        .catch(err=>console.log(`Err while update poster Img ${err}`));
-                    })
-                    .catch(err=>console.log(`Error while inserting large poster img${err}`));                        
-                })
-                .catch(err=>console.log(`Err while mv small poster Img ${err}`));  
-
-            } else {
-                console.log('movie is successfully updated without any Poster');
-                res.redirect('/admin/allMovieTV'); 
-            }
+        .then(()=>{
+            console.log("sucessful update");
+            res.redirect('/');            
         })
         .catch(err=>console.log(`Err when update movie ${err}`));
 
-        movie.save()
-        .then((movie)=>{     
-            req.files.smallPosterImg.name = `small_poster_pic_${movie._id}${path.parse(req.files.smallPosterImg.name).ext}`;
-            req.files.largePosterImg.name = `large_poster_pic_${movie._id}${path.parse(req.files.smallPosterImg.name).ext}`;
-            req.files.smallPosterImg.mv(`public/img/movie/${req.files.smallPosterImg.name}`)        
-            .then(()=>{
-                req.files.largePosterImg.mv(`public/img/movie/${req.files.largePosterImg.name}`)
-                .then(()=>{
-                    movieModel.updateOne({_id:movie._id},{
-                        smallPosterImg:req.files.smallPosterImg.name,
-                        largePosterImg:req.files.largePosterImg.name
-                    })
-                    .then(()=>{
-                        console.log('movie is successfully save');
-                        res.redirect('/admin/addMovieTV'); 
-                    })
-                    .catch(err=>console.log(`Err while update poster Img ${err}`));
-                })
-                .catch(err=>console.log(`Error while inserting large poster img${err}`));                        
-            })
-            .catch(err=>console.log(`Err while mv small poster Img ${err}`));            
-        })
-        .catch(err=>console.log(`Error while inserting movie the data ${err}`));
+
     }
 })
 
