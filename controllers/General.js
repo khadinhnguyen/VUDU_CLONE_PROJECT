@@ -4,6 +4,7 @@ const router = express.Router();
 const movie_ultil = require('../model/movie_ultility.js');
 const heroImages = require('../model/hero_images.js');
 const movieModel = require('../model/Movie');
+const {retrieveMovieById} = require('../middleware/movieRetrieve.js');
 
 
 
@@ -84,15 +85,29 @@ router.get('/tv-list', (req,res) => {
     .catch(err=>console.log(`Err when retrieve movei list ${err}`));
 });
 
-router.get('/movie/:id', (req,res) => {
-    movieModel.findById(req.params.id)
-    .then((movie)=>{
-        const {_id,title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature,smallPosterImg,largePosterImg} = movie;
-        res.render("./general/productDescription", {_id,title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature,smallPosterImg,largePosterImg
-        });
-    })
-    .catch(err=>console.log(`err wwhen find one movie ${err}`));
-    const product = movie_ultil.getMovie(req.params.id); 
+router.get('/movie/:id', retrieveMovieById,(req,res) => {
+    res.render("./general/productDescription", {movie:req.movie});
+    // movieModel.findById(req.params.id)
+    // .then((result)=>{
+    //     const {_id,title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature,smallPosterImg,largePosterImg} = result;
+    //     const movie = {
+    //         id:result._id,
+    //         title:result.title,
+    //         synopsis:result.synopsis,
+    //         rentalPrice:result.rentalPrice,
+    //         purchasePrice:result.purchasePrice,
+    //         category:result.category,
+    //         genre:result.genre,
+    //         rating:result.rating,
+    //         numberOfStar:result.numberOfStar,
+    //         feature:result.feature,
+    //         smallPosterImg:result.smallPosterImg,
+    //         largePosterImg:result.largePosterImg
+    //     };
+    //     res.render("./general/productDescription", {movie});
+    // })
+    // .catch(err=>console.log(`err wwhen find one movie ${err}`));
+    //const product = movie_ultil.getMovie(req.params.id); 
 
 });
 
