@@ -1,0 +1,34 @@
+.search-header{
+    z-index: 1;
+    background: linear-gradient(90deg,#007bc4,#041c2c 100%);
+    min-height: 120px;
+    width: 100%
+}
+
+.search-header-inner{
+    width: 100%;
+    max-width: 1364px;
+    min-width: 768px;
+    margin:auto;
+}
+
+.search-box{
+    position: relative;
+    margin: 0 4%;
+}
+
+#search-text{
+    height: 80px;
+    color: #fff;
+    width: 100%;
+    font-size: 60px;
+    font-weight: 700;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+#search-close{
+    float: right;
+}  
+
+ 

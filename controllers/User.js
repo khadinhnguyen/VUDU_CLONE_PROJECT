@@ -19,18 +19,23 @@ router.get('/dashboard',(req,res) => {
     cartModel.find({userId:req.session.userInfo._id})
     .then((results)=>{
         if(results){
+            //let sum = 0.0;
             const carts = results.map(result=>{
                 return{
                     _id:result._id,
                     title:result.title,
-                    userId:result.userId,
+                    userId:result.userId, 
                     movieId:result.movieId,
                     type:result.type,
                     price:result.price 
                 }
             })
+            // for (let i = 0; i < carts.length(); i++){
+            //     sum += carts[i].price;
+            // }
             res.render("./user/dashboard",{
                 carts
+                
             });
         } else {
             res.render("./user/dashboard");

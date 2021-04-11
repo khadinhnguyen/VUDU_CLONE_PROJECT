@@ -1,5 +1,8 @@
 .material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-24 { 
+    font-size: 24px; 
+    color: #fff;
+}
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 .font-13 {
@@ -186,10 +189,15 @@ margin-bottom: 18px;
     background-color:#003452 ;
 }
   
-  .dropdown:hover .dropbtn {
-      background-color: c#7098af;
-      color: #7098af
-    }
+.dropdown:hover .dropbtn {
+    background-color: c#7098af;
+    color: #7098af
+}
+
+#search-button{
+    border: none;
+    background: transparent;
+}
 
 
 main {

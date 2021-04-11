@@ -1,27 +1,27 @@
 <section>
     <div class="container">
-            <div class="hero-background hero-wrapper d-flex product-hero-background" style="background-image: url('/img/movie/{{largePosterImg}}');">
+            <div class="hero-background hero-wrapper d-flex product-hero-background" style="background-image: url('/img/movie/{{movie.largePosterImg}}');">
                 <div class="product-background-modify">
                     <div class="product-wrapper d-flex justify-content-start">
                         <div class="product-icon">
-                            <img src="/img/movie/{{smallPosterImg}}" alt={{title}}>
+                            <img src="/img/movie/{{movie.smallPosterImg}}" alt={{movie.title}}>
                         </div>
                         <div class="product-info d-flex flex-column">
-                            <div class="movie-title">{{title}}</div>
-                            <div class="left-align">{{category}} | {{genre}} | Rating: {{rating}} | ({{numberOfStar}})</div>
+                            <div class="movie-title">{{movie.title}}</div>
+                            <div class="left-align">{{movie.category}} | {{movie.genre}} | Rating: {{movie.rating}} | ({{movie.numberOfStar}})</div>
                             {{!-- <div class="left-align">{{product.rating}}</div> --}}
-                            <div class="movie-description">{{synopsis}}</div>
+                            <div class="movie-description">{{movie.synopsis}}</div>
                     
                             <div class="d-flex justify-content-center ">
-                                <form action="/user/addRent/{{_id}}" method="POST">
-                                    <button class="movie-button" type="submit">Rent ${{rentalPrice}}</button>
+                                <form action="/user/addRent/{{movie._id}}" method="POST">
+                                    <button class="movie-button" type="submit">Rent ${{movie.rentalPrice}}</button>
                                 </form>
                                 {{!-- <button class="movie-button" type="button">Rent ${{rentalPrice}}</button> --}}
-                                <button class="movie-button" type="button">Buy ${{purchasePrice}}</button>
+                                <button class="movie-button" type="button">Buy ${{movie.purchasePrice}}</button>
                             </div>
                             <br>
                             {{#if admin}}
-                                <a href="/admin/updateMovieTv/{{_id}}">
+                                <a href="/admin/updateMovieTv/{{movie._id}}">
                                 <button type="button" class="btn btn-secondary btn-md btn-block btn-danger">Edit (Admin Only)</button> 
                                 </a>                         
                             {{/if}}

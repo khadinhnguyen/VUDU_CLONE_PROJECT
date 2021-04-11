@@ -6,7 +6,7 @@ const movieModel = require('../model/Movie');
 const validation = require('../model/validation.js');
 const movie_ultil = require('../model/movie_ultility');
 const { movieAddValidation} = require('../model/validation')
-const {retrieveMovieById} = require('../middleware/movieRetrieve.js');
+const movieRetrive = require('../middleware/movieRetrieve.js');
 
 router.get('/addMovieTv', (req,res) => {
     const movie = {
@@ -36,40 +36,17 @@ router.get('/dashboard', (req,res)=>{
     })
 });
 
-router.get('/allMovieTv', (req,res)=>{
-    movieModel.find()
-    .then((results)=>{
-        const movies = results.map(result=>{
-            return {
-                id:result._id,
-                title:result.title,
-                synopsis:result.synopsis,
-                rentalPrice:result.rentalPrice,
-                purchasePrice:result.purchasePrice,
-                category:result.category,
-                genre:result.genre,
-                rating:result.rating,
-                numberOfStar:result.numberOfStar,
-                feature:result.feature,
-                smallPosterImg:result.smallPosterImg,
-                largePosterImg:result.largePosterImg
-            }
-        });
-        res.render('./general/allMovieTvList',{
-            pageTitle : "All Movie and TV (Admin Only)",
-            movies
-
-    })
-    .catch(err=>console.log(`Err when load all movie for admin ${err}`));
-
-
+router.get('/allMovieTv', movieRetrive.retrieveAllMovieTV,(req,res)=>{
+    res.render('./general/allMovieTvList',{
+        pageTitle : "All Movie and TV (Admin Only)", 
+        movies: req.movies
     })
 })
 
 router.post('/addMovieTv', (req,res)=>{
     const newMovie = {
         title: req.body.title,
-        synopsis: req.body.synopsis,
+        synopsis: req.body.synopsis, 
         rentalPrice: req.body.rentalPrice,
         purchasePrice: req.body.purchasePrice,
         category: req.body.category,
@@ -135,7 +112,7 @@ router.post('/addMovieTv', (req,res)=>{
 
 });
 
-router.put('/updateMovieTv/:id',retrieveMovieById, (req,res)=>{
+router.put('/updateMovieTv/:id',movieRetrive.retrieveMovieById, (req,res)=>{
     let smallImgUpdate = false;
     let largeImgUpdate = false;
 

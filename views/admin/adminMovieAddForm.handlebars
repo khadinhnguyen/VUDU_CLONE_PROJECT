@@ -36,7 +36,7 @@
                             <div class="col">
                                 <label>Category</label>
                                 <select name="category">
-                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}} value="movie">Movie</option>
+                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}} value="movie">movie</option>
                                     <option {{#if_eq movie.category "tv"}}selected{{/if_eq}} value="tv">TV</option>
                                 </select>
                             </div>
@@ -46,14 +46,17 @@
                                 <select name="genre">
                                     <option {{#if_eq movie.genre "action"}}selected{{/if_eq}} value="action">Action</option>
                                     <option {{#if_eq movie.genre "scri-fi"}}selected{{/if_eq}} value="scri-fi">Scri-Fi</option>
-                                    <option {{#if_eq movie.genre "family"}}selected{{/if_eq}} value="family">Family</option>
-                                    <option {{#if_eq movie.genre "kid"}}selected{{/if_eq}} value="kid">Kid</option>
+                                    <option {{#if_eq movie.genre "family"}}selected{{/if_eq}} value="family">Family  </option>
+                                    <option {{#if_eq movie.genre "kid"}}selected{{/if_eq}} value="kid">Kid  </option>
+                                    <option {{#if_eq movie.genre "kid"}}selected{{/if_eq}} value="comedy">Comedy  </option>
                                 </select>
                             </div>
                             <br>                         
                             <div class="col">
                                 <label>Featured</label>
                                 <select name="feature">
+                                    <option {{#if_eq movie.feature "none"}}selected{{/if_eq}} value="none">No Feature</option>
+                                    <option {{#if_eq movie.feature "banner"}}selected{{/if_eq}} value="banner">Banner Show</option>
                                     <option {{#if_eq movie.feature "rental"}}selected{{/if_eq}} value="rental">Rental</option>
                                     <option {{#if_eq movie.feature "week-deal"}}selected{{/if_eq}} value="week-deal">Deal Of The Week</option>
                                     <option {{#if_eq movie.feature "new-release"}}selected{{/if_eq}} value="new-release">New Release</option>

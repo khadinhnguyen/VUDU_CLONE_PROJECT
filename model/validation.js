@@ -52,7 +52,7 @@ exports.loginValidation=(userInput)=>{
     return errors;
 };
 
-exports.movieAddValidation=(userInput,images)=> {
+exports.movieAddValidation=(userInput)=> {
     var errors = {
         errorOccured : false,
     };
@@ -91,11 +91,11 @@ exports.movieAddValidation=(userInput,images)=> {
     //     errors.largePosterImgError = "* Please upload Large Poster Image";
     // }
     const regularExpress = /.jpg|.gifs|.pngs/;
-    if (images.smallPosterImg.length > 0 && !regularExpress.test(images.smallPosterImg)){
+    if (userInput.smallPosterImg.length == 0 || !regularExpress.test(userInput.smallPosterImg)){
         errors.errorOccured = true;
         errors.smallPosterImgError = "* Please upload image file .jpgs / .gifs / .pngs";
     }
-    if (images.largePosterImg.length > 0 && !regularExpress.test(images.largePosterImg)){
+    if (userInput.largePosterImg.length == 0 || !regularExpress.test(userInput.largePosterImg)){
         errors.errorOccured = true;
         errors.largePosterImgError = "* Please upload image file .jpgs / .gifs / .pngs";
     }

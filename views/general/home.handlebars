@@ -13,16 +13,36 @@
         </div>
     </div>
 </section>
-<section> {{!-- Movie Section --}}
+<section> 
     <div class="container">
         <div class="main-section-title">
-            <a href="">Movies</a>
+            <a href="">Featured Rentals</a>
         </div>
         <div class="grid-container-7">
-            {{#each movies}}
+            {{#each rentals}}
                 <a href="/movie/{{this.id}}">
                     <div class="poster-wrapper">
-                        <img class="img-thumbnail" src="/img/{{this.posterImage}}" alt="{{this.title}}">
+                        <img class="img-thumbnail" src="/img/movie/{{this.smallPosterImg}}" alt="{{this.title}}">
+                        <div class="overlay">
+                            <div class="text">{{this.title}}</div>
+                        </div>                        
+                    </div> 
+                </a>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<section> 
+    <div class="container">
+        <div class="main-section-title">
+            <a href="">Featured New Releases</a>
+        </div>
+        <div class="grid-container-7">
+            {{#each newReleases}}
+                <a href="/movie/{{this.id}}">
+                    <div class="poster-wrapper">
+                        <img class="img-thumbnail" src="/img/movie/{{this.smallPosterImg}}" alt="{{this.title}}">
                         <div class="overlay">
                             <div class="text">{{this.title}}</div>
                         </div>                        
@@ -48,9 +68,9 @@
             </span>
         </div>
         <div class="grid-container-5">
-            {{#each promotions}}
+            {{#each banners}}
                 <div class="special-poster-container">
-                    <img src="/img/{{this.posterImage}}" alt="{{this.title}}">
+                    <img src="/img/movie/{{this.smallPosterImg}}" alt="{{this.title}}">
                 </div>
             {{/each}}
         </div>
@@ -61,16 +81,36 @@
 
 </section>
 
-<section> {{!-- TV Section --}}
+<section> 
     <div class="container">
         <div class="main-section-title">
-            <a href="">TV</a>
+            <a href="">Deals of the Week</a>
+        </div>
+        <div class="grid-container-7">
+            {{#each weekdeals}}
+                <a href="/movie/{{this.id}}">
+                    <div class="poster-wrapper">
+                        <img class="img-thumbnail" src="/img/movie/{{this.smallPosterImg}}" alt="{{this.title}}">
+                        <div class="overlay">
+                            <div class="text">{{this.title}}</div>
+                        </div>                        
+                    </div> 
+                </a>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<section> 
+    <div class="container">
+        <div class="main-section-title">
+            <a href="">Featured TV Seasons</a>
         </div>
         <div class="grid-container-7">
             {{#each TVs}}
-                <a href="/{{this.id}}">
+                <a href="/movie/{{this.id}}">
                     <div class="poster-wrapper">
-                        <img class="img-thumbnail" src="/img/{{this.posterImage}}" alt="{{this.title}}">
+                        <img class="img-thumbnail" src="/img/movie/{{this.smallPosterImg}}" alt="{{this.title}}">
                         <div class="overlay">
                             <div class="text">{{this.title}}</div>
                         </div>                        

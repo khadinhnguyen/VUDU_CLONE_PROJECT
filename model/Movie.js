@@ -41,9 +41,11 @@ const movieSchema = new Schema({
     },
     smallPosterImg:{
         type:String,
+        require:true
     },
     largePosterImg:{
-        type:String
+        type:String,
+        require:true
     },
     dateCreated:    {
         type:Date,
