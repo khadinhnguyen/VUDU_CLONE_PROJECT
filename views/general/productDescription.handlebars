@@ -13,15 +13,20 @@
                             <div class="movie-description">{{movie.synopsis}}</div>
                     
                             <div class="d-flex justify-content-center ">
-                                <form action="/user/addRent/{{movie._id}}" method="POST">
+                                <form action="/user/addRent/{{movie.id}}" method="POST">
                                     <button class="movie-button" type="submit">Rent ${{movie.rentalPrice}}</button>
                                 </form>
                                 {{!-- <button class="movie-button" type="button">Rent ${{rentalPrice}}</button> --}}
-                                <button class="movie-button" type="button">Buy ${{movie.purchasePrice}}</button>
+                                
+
+                                <form action="/user/addPurchase/{{movie.id}}" method="POST">
+                                    <button class="movie-button" type="submit">Buy ${{movie.purchasePrice}}</button>
+                                </form>
+                            
                             </div>
                             <br>
                             {{#if admin}}
-                                <a href="/admin/updateMovieTv/{{movie._id}}">
+                                <a href="/admin/updateMovieTv/{{movie.id}}">
                                 <button type="button" class="btn btn-secondary btn-md btn-block btn-danger">Edit (Admin Only)</button> 
                                 </a>                         
                             {{/if}}

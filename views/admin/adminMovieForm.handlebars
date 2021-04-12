@@ -2,12 +2,22 @@
     <div class="form-container">
         <div></div>
         <div class="form-top">
-            <div class="form-header"><p class="text-center font-24 fw-bolder">Add a New Movie/TV to Database </p></div>
+            {{#if movieCreate}}
+                <div class="form-header"><p class="text-center font-24 fw-bolder">Create Movie or TV</p></div>
+            {{else}}
+                <div class="form-header"><p class="text-center font-24 fw-bolder">Update Movie or TV</p></div>
+            {{/if}}
             <div class="form-body">
-                <form  action="/admin/addMovieTv" method="POST" enctype="multipart/form-data">
-                    <div class="mb-3">
+                
+                    <form 
+                    {{#if movieCreate}} 
+                    action="/admin/addMovieTv" 
+                    {{else}}
+                    action="/admin/updateMovieTv/{{movie.id}}?method=PUT"
+                    {{/if}}
+                    enctype="multipart/form-data" method="POST">
 
-                        
+                    <div class="mb-3">                        
                             {{!-- <div class="col"> --}}
                                 <label>Title</label>
                                 <input type="text" class="form-control" value='{{movie.title}}' id="title" name="title">
@@ -36,12 +46,12 @@
                             <div class="col">
                                 <label>Category</label>
                                 <select name="category">
-                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}} value="movie">movie</option>
+                                    <option {{#if_eq movie.category "movie"}}selected{{/if_eq}}value="movie">movie</option>
                                     <option {{#if_eq movie.category "tv"}}selected{{/if_eq}} value="tv">TV</option>
                                 </select>
                             </div>
                             <br>
-                            <div class="col">
+                           <div class="col">
                                 <label>Genre</label>
                                 <select name="genre">
                                     <option {{#if_eq movie.genre "action"}}selected{{/if_eq}} value="action">Action</option>
@@ -97,7 +107,11 @@
 
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="form-button">Add</button>
+                        {{#if movieCreate}}
+                            <button type="submit" class="form-button">Create</button>
+                        {{else}}
+                            <button type="submit" class="form-button">Update</button>
+                        {{/if}}
                     </div>
                 </form>
             </div>

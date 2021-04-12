@@ -16,13 +16,6 @@ exports.getHomePage = (req,res,next) => {
     }); 
 };
 
-exports.getDashboard =(req,res,next) => {
-    res.render('./general/dashboard', {
-        pageTitle: "Welcome to Vudu",
-        userName : ""
-    });
-};
-
 exports.getMovieList = (req,res,next) => {
     res.render('./general/allMovieTvList', {
         pageTitle : "Movies",

@@ -63,9 +63,9 @@ exports.addMovieTv = (req,res,next) => {
         res.render("./admin/adminMovieForm", {
             pageTitle : "Add Movie or TV",
             movieCreate : true,
-            errors,
+            errors, 
             movie : newMovie
-        });
+        }); 
     }else{
         const movie = new movieModel(newMovie);
         movie.save()
@@ -129,8 +129,9 @@ exports.updateMovieTv = (req,res,next) => {
     const errors = movieAddValidation(updatedMovie);
     if(errors.errorOccured){
         const {title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature} = updatedMovie;
-        res.render("./admin/adminMovieUpdateForm", {
+        res.render("./admin/adminMovieForm", {
             pageTitle : "Update Movie or TV",
+            movieCreate : false,
             errors,
             _id:req.params.id,
             title,synopsis,rentalPrice,purchasePrice,category,genre,rating,numberOfStar,feature

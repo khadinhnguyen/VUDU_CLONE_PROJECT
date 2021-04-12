@@ -20,12 +20,14 @@
                             <td>{{this.type}}</td>
                             <td>{{this.price}}</td>
                             <td>
-                                <a href="/task/delete/{{this.id}}?method=DELETE" class="btn btn-danger">Remove</a>
+                                <a href="/user/delete/{{this.id}}?method=DELETE" class="btn btn-danger">Remove</a>
                             </td>
                         </tr>
                         {{/each}}
                     </tbody>
                 </table>
+
+                <div class="fs-3 text-danger">Total: $ {{sum}}</div>
             </div>
 
             <div class="form-body">
