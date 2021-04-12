@@ -1,6 +1,7 @@
 const cartModel = require('../model/Cart');
 const userModel = require('../model/User');
 const {registerValidation, loginValidation} = require('../model/validation.js');
+const bcrypt = require('bcryptjs');
 
 exports.signIn = (req,res,next) => {
     res.render("./user/signin", {
