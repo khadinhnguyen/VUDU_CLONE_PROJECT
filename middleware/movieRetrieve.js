@@ -4,7 +4,7 @@ exports.retrieveMovieById = (req,res,next) =>{
     movieModel.findById(req.params.id)
     .then((result)=>{        
         req.movie = {
-            _id:result._id,
+            id:result._id,
             title:result.title,
             synopsis:result.synopsis,
             rentalPrice:result.rentalPrice,
