@@ -74,6 +74,7 @@ app.use(session({
 app.use((req,res,next)=>{
     
     req.session.userInfo = {
+        _id: "6064f5c33a315954f75khanguyen",
         firstName : "Kha",
         lastName : "Nguyen",
         type : "admin"

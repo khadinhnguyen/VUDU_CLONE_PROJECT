@@ -14,6 +14,11 @@ exports.retrieveAllItems = (req,res,next) => {
                     price:result.price 
                 }
             })
+            req.sumShoppingCart = 0.0;
+            for(let i = 0; i< req.cartItems.length; i++){
+                req.sumShoppingCart = req.sumShoppingCart + req.cartItems[i].price;
+            }
+            req.sumShoppingCart = req.sumShoppingCart.toFixed(2);
         }
         next();
     })

@@ -14,8 +14,10 @@ router.post('/registerAccount', userService.postRegisterAccount);
 router.post('/signInAccount', userService.postSignin);
 router.post('/addRent/:id',loginAuthentication,movieRetrieve.retrieveMovieById,userService.addRental);
 router.post('/addPurchase/:id',loginAuthentication,movieRetrieve.retrieveMovieById, userService.addPurchase);
+router.post('/checkout',loginAuthentication,retrieveAllItems,userService.checkout);
 router.delete('/delete/:id',loginAuthentication,userService.deleteCartItem);
 
+ 
 
 module.exports=router;
 

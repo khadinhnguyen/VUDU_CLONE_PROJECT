@@ -1,4 +1,5 @@
 const cartModel = require('../model/Cart');
+const orderModel = require('../model/Order');
 const userModel = require('../model/User');
 const {registerValidation, loginValidation} = require('../model/validation.js');
 const bcrypt = require('bcryptjs');
@@ -127,15 +128,10 @@ exports.postSignin = (req,res,next) => {
    
 };
 
-exports.dashboard = (req,res,next) => {
-    let sum = 0.0;
-    for (let i = 0; i < req.cartItems.length; i++){
-        sum = sum + req.cartItems[i].price;
-    }
-    sum = sum.toFixed(2);
+exports.dashboard = (req,res,next) => {    
     res.render("./user/dashboard",{
         carts : req.cartItems,
-        sum               
+        sum : req.sumShoppingCart              
     });
 }
 
@@ -178,3 +174,32 @@ exports.deleteCartItem = (req,res,next) => {
     })
     .catch(err=>console.log(`Err when delete an item ${err}`));
 }
+
+exports.checkout = (req,res,next) =>{
+    const movieList = req.cartItems.map(item=>{
+        return{
+            movieId:item.movieId,
+            title:item.title,
+            type:item.type,
+            price:item.price 
+        }
+    });
+    const checkoutOrder = {
+        userId: req.session.userInfo._id,
+        movieList : movieList,
+        totalPrice: req.sumShoppingCart
+    };
+    const order = new orderModel(checkoutOrder);
+    order.save()
+    .then(()=>{
+        console.log("Order is successfully ender");
+        cartModel.deleteMany({userId:req.session.userInfo._id})
+        .then(()=>{
+            console.log("successfully clear all shopping cart");
+            res.redirect('/');
+        })
+        .catch(err=>console.log(`Err when clear shopping cart ${err}`));
+    })
+    .catch(err=>console.log(`Err when save order ${err}`));
+};
+
