@@ -26,9 +26,16 @@
                             </div>
                             <br>
                             {{#if admin}}
+          
                                 <a href="/admin/updateMovieTv/{{movie.id}}">
-                                <button type="button" class="btn btn-secondary btn-md btn-block btn-danger">Edit (Admin Only)</button> 
-                                </a>                         
+                                    <button type="button" class="btn btn-secondary btn-md btn-block btn-danger">Edit (Admin Only)</button> 
+                                </a> 
+                                <br>
+                                      
+                                <form action="/admin/deleteMovieTv/{{movie.id}}?method=DELETE" method="POST">
+                                    <button onclick="return confirm('Are you sure to delete this movie?');" type="submit" class="btn btn-secondary btn-md btn-block btn-danger">Delete (Admin Only)</button> 
+                                </form>         
+                           
                             {{/if}}
                             <br>
                             

@@ -17,4 +17,6 @@ router.post('/addMovieTv', adminAuthentication, adminService.addMovieTv);
 
 router.put('/updateMovieTv/:id',adminAuthentication, movieRetrive.retrieveMovieById, adminService.updateMovieTv);
 
+router.delete('/deleteMovieTv/:id',adminAuthentication,adminService.deleteMovie);
+
 module.exports=router;

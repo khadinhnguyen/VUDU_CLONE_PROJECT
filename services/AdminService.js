@@ -150,3 +150,11 @@ exports.updateMovieTv = (req,res,next) => {
     }
 
 };
+
+exports.deleteMovie= (req,res,next) => {
+    movieModel.deleteOne({_id:req.params.id})
+    .then(()=>{
+        res.redirect('/admin/dashboard');
+    })
+    .catch(err=>console.log(`Err when delete an item ${err}`));
+};

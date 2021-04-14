@@ -11,4 +11,3 @@ router.get('/movie/:id', movieRetrieve.retrieveMovieById, generalService.getProd
 router.post('/search-result', generalService.searchMovies);
  
 module.exports=router;
-
