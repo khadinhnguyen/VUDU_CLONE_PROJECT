@@ -30,7 +30,7 @@ This is a Dynamic website with Server-Side Web Application to demonstrate MVC wi
 - has access to user dashboard with shopping cart summary
 - can checkout shopping cart
 
-###### Registred User Dashboard
+###### Registered User Dashboard
 ![GitHub Logo](/public/img/Readme/user-dashboard.png)
 
 #### Admin
