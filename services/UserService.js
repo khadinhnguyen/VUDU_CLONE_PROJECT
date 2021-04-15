@@ -176,6 +176,12 @@ exports.deleteCartItem = (req,res,next) => {
 }
 
 exports.checkout = (req,res,next) =>{
+    let checkOutMsg = `<h1> Order Confirmation </h1><br><br> 
+                        <table><thead>
+                        <th>Movie Name</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        </thead><tbody>`;
     const movieList = req.cartItems.map(item=>{
         return{
             movieId:item.movieId,
@@ -184,6 +190,15 @@ exports.checkout = (req,res,next) =>{
             price:item.price 
         }
     });
+    
+    for (let i = 0; i< movieList.length; i++){
+        checkOutMsg += `<tr>
+        <td>${movieList[i].title}</td>
+        <td>${movieList[i].type}</td>
+        <td>${movieList[i].price}</td></tr>`;
+    }
+    checkOutMsg += `</tbody></table>`;
+
     const checkoutOrder = {
         userId: req.session.userInfo._id,
         movieList : movieList,
@@ -195,8 +210,25 @@ exports.checkout = (req,res,next) =>{
         console.log("Order is successfully ender");
         cartModel.deleteMany({userId:req.session.userInfo._id})
         .then(()=>{
-            console.log("successfully clear all shopping cart");
-            res.redirect('/');
+            console.log(req.session.userInfo.email);
+            const sgMail = require('@sendgrid/mail')
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+            const msg = {
+            to: req.session.userInfo.email, // Change to your recipient
+            from: 'nguyendkha@gmail.com', // Change to your verified sender
+            subject: '//WEB322// Order Confirmation',
+            text: 'Thanks for doing business with Vudu',
+            html: `${checkOutMsg}`,
+            }
+            sgMail
+            .send(msg)
+            .then(() => {
+                console.log(checkOutMsg);
+                res.redirect('/');
+            })
+            .catch(err=>console.error(`Error while emailing confirmation ${err}`))
+
+            
         })
         .catch(err=>console.log(`Err when clear shopping cart ${err}`));
     })
