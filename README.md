@@ -7,7 +7,7 @@ This is a Dynamic website with Server-Side Web Application to demonstrate MVC wi
 - Express-Handlebars for all views rendering
 - Mongoose to interact with MongoDB
 - sendgrid API to send email
-- Heroku for web deployment
+- Heroku for web deployment (https://web322-vudu-project.herokuapp.com/)
 
 ### Application functionality
 
@@ -15,6 +15,14 @@ This is a Dynamic website with Server-Side Web Application to demonstrate MVC wi
 - all visitors can view home page and movie description without logging in
 - visitor can register an account with email. If register is successful, an welcome email will be sent to user's registerd email
 
+###### Home Page
+![GitHub Logo](/public/img/Readme/homepage.png)
+
+###### Registration Page
+![GitHub Logo](/public/img/Readme/registration.png)
+
+###### Product Page
+![GitHub Logo](/public/img/Readme/product-description.png)
 
 #### Registerd User
 
@@ -22,10 +30,19 @@ This is a Dynamic website with Server-Side Web Application to demonstrate MVC wi
 - has access to user dashboard with shopping cart summary
 - can checkout shopping cart
 
+###### Registered User Dashboard
+![GitHub Logo](/public/img/Readme/user-dashboard.png)
 
 #### Admin
 - has access to create, edit and delete any movie
 - you can access with username: admin@admin / password: 111111111@ (Please don't delete the products)
+
+###### Admin Dashboard
+![GitHub Logo](/public/img/Readme/admin_dashboard.png)
+
+###### Admin Edit and Delete function in Product Description
+![GitHub Logo](/public/img/Readme/admin-edit.png)
+
 
 
 <!-- testting abc  -->
